@@ -8,6 +8,8 @@ import net.thumbtack.tyunkov.lessons.fourth.Color;
  */
 public class Circle extends Figure {
 
+	// REVU use private, it is better do not have direct access to these
+	// fields from subclasses
     protected Point2D center;
     protected double radius;
 
@@ -18,6 +20,9 @@ public class Circle extends Figure {
     public Circle(Point2D center, double radius, String colorString) {
         this.center = center;
         this.radius = radius;
+        
+        // REVU move this "try" to enum Color : make Color.fromString method
+        // the same for other classes
         try {
             color = Color.valueOf(colorString);
         } catch (IllegalArgumentException e) {

@@ -17,6 +17,8 @@ public class Cylinder extends Circle {
     public Cylinder(Point2D center, double radius, double height, String colorString) {
         super(center, radius);
         this.height = height;
+        // REVU do not operate with superclass fields in subclass,
+        // let superclass works with them
         try {
             color = Color.valueOf(colorString);
         } catch (IllegalArgumentException e) {

@@ -48,6 +48,7 @@ public class FirstTest {
         String[] strings = {"Hello", "World!!!"};
         assertArrayEquals(strings, string.split(" "));
         assertEquals("Hello", "    Hello   ".trim());
+        // REVU The static method valueOf(double) from the type String should be accessed in a static way
         assertEquals("0.001", string.valueOf(1.0E-3));
         assertEquals("0,0010", String.format("%.4f", 1.0E-3));
     }

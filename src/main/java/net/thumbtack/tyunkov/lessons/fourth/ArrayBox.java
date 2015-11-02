@@ -2,6 +2,10 @@ package net.thumbtack.tyunkov.lessons.fourth;
 
 import net.thumbtack.tyunkov.lessons.third.figures.Figure;
 
+// REVU packages must be created according to object types, inheritance etc. but not
+// according to lesson number :-). Refactor.
+
+
 /**
  * Created by dmitry on 25.10.15.
  */
