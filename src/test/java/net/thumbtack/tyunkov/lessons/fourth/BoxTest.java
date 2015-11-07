@@ -9,6 +9,8 @@ import static org.junit.Assert.*;
  * Created by dmitry on 25.10.15.
  */
 public class BoxTest {
+	
+	// REVU why here ? Move to appropriate class
     static <T> boolean isSameSquareStatic(Box<? extends Figure> first, Box<? extends Figure> second) {
         final double EPS = 1.0E-6;
         return Math.abs(first.square() - second.square()) < EPS;
