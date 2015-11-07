@@ -64,13 +64,10 @@ public class FileMethodTest {
 
     @Test
     public void testListFiles() {
-        File parrentDir = new File("/home/dmitry/Thumbtack");
+        File parrentDir = new File("/home/dmitry/Thumbtack/src");
         File[] files = parrentDir.listFiles();
-        File[] files1 = {new File("/home/dmitry/Thumbtack/Thumbtack.iml"), new File("/home/dmitry/Thumbtack/.gitignore"),
-                new File("/home/dmitry/Thumbtack/pom.xml"), new File("/home/dmitry/Thumbtack/.idea"),
-                new File("/home/dmitry/Thumbtack/src"), new File("/home/dmitry/Thumbtack/.git"),
-                new File("/home/dmitry/Thumbtack/target")
-                };
+        File[] files1 = { new File("/home/dmitry/Thumbtack/src/test"),
+                new File("/home/dmitry/Thumbtack/src/main") };
         assertArrayEquals(files1,files);
     }
 

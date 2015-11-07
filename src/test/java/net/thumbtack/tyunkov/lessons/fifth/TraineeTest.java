@@ -41,7 +41,7 @@ public class TraineeTest {
         try {
             Trainee trainee = new Trainee("Dmitry", "Tyunkov", 6);
         } catch (TraineeException ex) {
-            assertThat(ex.getMessage(), is("Rating incorrect"));
+            assertThat(ex.getMessage(), is("Mark incorrect"));
         }
     }
 
@@ -89,7 +89,7 @@ public class TraineeTest {
             try {
                 trainee.setMark(0);
             } catch (TraineeException ex) {
-                assertThat(ex.getMessage(), is("Rating incorrect"));
+                assertThat(ex.getMessage(), is("Mark incorrect"));
             }
         } catch (TraineeException ex) {
             fail(ex.getMessage());

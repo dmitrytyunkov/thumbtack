@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.thumbtack.tyunkov.lessons</groupId>
-    <artifactId>third</artifactId>
+    <groupId>net.thumbtack.tyunkov</groupId>
+    <artifactId>lessons</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>third</name>
+    <name>lessons</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -37,6 +37,8 @@
                 <version>3.3</version>
                 <configuration>
                     <compilerVersion>1.8</compilerVersion>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -48,11 +50,6 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>2.5.1</version>
-                <!-- <configuration>
-                    <formast>
-                        <format>xml</format>
-                    </formast>
-                </configuration> -->
                 <executions>
                     <execution>
                         <phase>package</phase>
