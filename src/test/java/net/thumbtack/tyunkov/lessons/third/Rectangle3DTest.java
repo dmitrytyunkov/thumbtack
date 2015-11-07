@@ -38,7 +38,7 @@ public class Rectangle3DTest {
     public void testVolume() throws Exception {
         double volume = new Rectangle3D(3, 3, 3) {
             public double volume() {
-                return super.square() * (z2 - z1);
+                return super.square() * (this.getZ2() - this.getZ1());
             }
         }.volume();
         assertEquals(volume, 27, 1.0E-6);

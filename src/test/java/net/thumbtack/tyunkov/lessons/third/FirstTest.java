@@ -2,6 +2,8 @@ package net.thumbtack.tyunkov.lessons.third;
 
 import org.junit.Test;
 
+import java.util.Locale;
+
 import static org.junit.Assert.*;
 
 /**
@@ -48,7 +50,7 @@ public class FirstTest {
         String[] strings = {"Hello", "World!!!"};
         assertArrayEquals(strings, string.split(" "));
         assertEquals("Hello", "    Hello   ".trim());
-        assertEquals("0.001", string.valueOf(1.0E-3));
-        assertEquals("0,0010", String.format("%.4f", 1.0E-3));
+        assertEquals("0.001", String.valueOf(1.0E-3));
+        assertEquals("0.0010", String.format(Locale.ENGLISH, "%.4f", 1.0E-3));
     }
 }

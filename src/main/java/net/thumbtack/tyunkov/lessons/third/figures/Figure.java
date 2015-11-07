@@ -1,5 +1,6 @@
 package net.thumbtack.tyunkov.lessons.third.figures;
 
+import net.thumbtack.tyunkov.lessons.fifth.ColorException;
 import net.thumbtack.tyunkov.lessons.fourth.Color;
 import net.thumbtack.tyunkov.lessons.third.Colored;
 
@@ -8,7 +9,7 @@ import net.thumbtack.tyunkov.lessons.third.Colored;
  */
 public abstract class Figure implements Colored {
 
-    protected Color color = Color.BLACK;
+    private Color color = Color.BLACK;
 
     public abstract void moveTo(double dX, double dY);
 
@@ -24,7 +25,12 @@ public abstract class Figure implements Colored {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String colorString) throws ColorException {
+        Color.fromString(colorString);
+        color = Color.getColor();
+    }
+
+    public void setColor(Color color){
         this.color = color;
     }
 }

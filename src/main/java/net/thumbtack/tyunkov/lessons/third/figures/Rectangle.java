@@ -1,14 +1,18 @@
 package net.thumbtack.tyunkov.lessons.third.figures;
 
 
+import net.thumbtack.tyunkov.lessons.fifth.ColorException;
 import net.thumbtack.tyunkov.lessons.fourth.Color;
+
+import java.security.Signature;
+import java.util.Locale;
 
 /**
  * Created by Dmitry on 04.10.2015.
  */
 public class Rectangle extends Figure {
 
-    protected double x1, y1, x2, y2;
+    private double x1, y1, x2, y2;
 
     public Rectangle(double x1, double y1, double x2, double y2, String colorString) {
         if (x2 < x1 || y2 < y1)
@@ -18,9 +22,9 @@ public class Rectangle extends Figure {
         this.x2 = x2;
         this.y2 = y2;
         try {
-            color = Color.valueOf(colorString);
-        } catch (IllegalArgumentException e) {
-            color = Color.BLACK;
+            setColor(colorString);
+        } catch (ColorException ex) {
+            setColor(Color.BLACK);
         }
     }
 
@@ -33,14 +37,18 @@ public class Rectangle extends Figure {
     }
 
     public Rectangle() {
-        this(0, 0, 1, 1);
+        this(1, 1);
     }
 
     public void printCoordinates() {
-        System.out.println("bottom-left (" + Math.round(x1 * 100) / 100.0 + ", " + Math.round(y1 * 100) / 100.0 + ")");
-        System.out.println("top-left (" + Math.round(x1 * 100) / 100.0 + ", " + Math.round(y2 * 100) / 100.0 + ")");
-        System.out.println("top-right (" + Math.round(x2 * 100) / 100.0 + ", " + Math.round(y2 * 100) / 100.0 + ")");
-        System.out.println("bottom-right (" + Math.round(x2 * 100) / 100.0 + ", " + Math.round(y1 * 100) / 100.0 + ")");
+        System.out.printf(Locale.ENGLISH, "bottom-left (%.2f, %.2f)", x1, y1);
+        System.out.println();
+        System.out.printf(Locale.ENGLISH, "top-left (%.2f, %.2f)", x1, y2);
+        System.out.println();
+        System.out.printf(Locale.ENGLISH, "top-right (%.2f, %.2f)", x2, y2);
+        System.out.println();
+        System.out.printf(Locale.ENGLISH, "bottom-right (%.2f, %.2f)", x2, y1);
+        System.out.println();
     }
 
     public void moveTo(double dX, double dY) {

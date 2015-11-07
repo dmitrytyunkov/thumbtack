@@ -15,14 +15,14 @@ public class SeventhTest {
     public void testColored() throws Exception {
         Rectangle3D rectangle3D = new Rectangle3D();
         Colored colored = rectangle3D;
-        colored.setColor(Color.BLACK);
+        colored.setColor("Black");
         System.out.println(colored.getColor());
         Car car = new Car("Volkswagen Passat", 1500, 200);
         colored = car;
-        colored.setColor(Color.BLUE);
+        colored.setColor("Blue");
         System.out.println(colored.getColor());
         Circle circle = new Circle(new Point2D(3, 3), 3);
-        circle.setColor(Color.GREEN);
+        circle.setColor("Green");
         colored = circle;
         System.out.println(colored.getColor());
     }

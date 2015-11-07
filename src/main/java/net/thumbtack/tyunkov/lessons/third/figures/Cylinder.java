@@ -1,32 +1,31 @@
 package net.thumbtack.tyunkov.lessons.third.figures;
 
 
+import net.thumbtack.tyunkov.lessons.fifth.ColorException;
 import net.thumbtack.tyunkov.lessons.fourth.Color;
+
+import java.util.Locale;
 
 /**
  * Created by dmitry on 24.10.15.
  */
 public class Cylinder extends Circle {
 
-    protected double height;
+    private double height;
+
+    public Cylinder(Point2D center, double radius, double height, String colorString) {
+        super(center, radius, colorString);
+        this.height = height;
+    }
 
     public Cylinder(Point2D center, double radius, double height) {
         this(center, radius, height, Color.BLACK.toString());
     }
 
-    public Cylinder(Point2D center, double radius, double height, String colorString) {
-        super(center, radius);
-        this.height = height;
-        try {
-            color = Color.valueOf(colorString);
-        } catch (IllegalArgumentException e) {
-            color = Color.BLACK;
-        }
-    }
-
     public void printCoordinates() {
         super.printCoordinates();
-        System.out.println("height = " + Math.round(height * 100) / 100.0);
+        System.out.printf(Locale.ENGLISH, "height = %.2f", height);
+        System.out.println();
     }
 
     public double volume() {

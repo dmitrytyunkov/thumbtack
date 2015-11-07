@@ -1,5 +1,6 @@
 package net.thumbtack.tyunkov.lessons.third.cars;
 
+import net.thumbtack.tyunkov.lessons.fifth.ColorException;
 import net.thumbtack.tyunkov.lessons.fourth.Color;
 import net.thumbtack.tyunkov.lessons.third.Colored;
 
@@ -22,9 +23,9 @@ public class Car implements Colored {
         this.weight = weight;
         this.maxSpeed = maxSpeed;
         try {
-            color = Color.valueOf(colorString);
-        } catch (IllegalArgumentException e) {
-            color = Color.BLACK;
+            setColor(colorString);
+        } catch (ColorException ex) {
+            setColor(Color.BLACK);
         }
     }
 
@@ -38,6 +39,12 @@ public class Car implements Colored {
         return color;
     }
 
+    public void setColor(String colorString) throws ColorException {
+        Color.fromString(colorString);
+        color = Color.getColor();
+    }
+
+    @Override
     public void setColor(Color color) {
         this.color = color;
     }

@@ -1,23 +1,21 @@
 package net.thumbtack.tyunkov.lessons.third.figures;
 
+import net.thumbtack.tyunkov.lessons.fifth.ColorException;
 import net.thumbtack.tyunkov.lessons.fourth.Color;
+
+import java.util.Locale;
 
 /**
  * Created by dmitry on 18.10.15.
  */
 public class Rectangle3D extends Rectangle {
 
-    protected double z1, z2;
+    private double z1, z2;
 
     public Rectangle3D(double x1, double y1, double z1, double x2, double y2, double z2, String colorString) {
-        super(x1, y1, x2, y2);
+        super(x1, y1, x2, y2, colorString);
         this.z1 = z1;
         this.z2 = z2;
-        try {
-            color = Color.valueOf(colorString);
-        } catch (IllegalArgumentException e) {
-            color = Color.BLACK;
-        }
     }
 
     public Rectangle3D(double x1, double y1, double z1, double x2, double y2, double z2) {
@@ -25,32 +23,30 @@ public class Rectangle3D extends Rectangle {
     }
 
     public Rectangle3D(double length, double width, double height) {
-        super(length, width);
-        this.z2 = height;
+        this(0, 0, 0, length, width, height);
     }
 
     public Rectangle3D() {
-        super();
-        this.z2 = 1;
+        this(1, 1, 1);
     }
 
     public void printCoordinates() {
-        System.out.println("x1-y1-z1 (" + Math.round(x1 * 100) / 100.0 + ", " + Math.round(y1 * 100) / 100.0 +
-                ", " + Math.round(z1 * 100) / 100.0 + ")");
-        System.out.println("x2-y1-z1 (" + Math.round(x2 * 100) / 100.0 + ", " + Math.round(y1 * 100) / 100.0 +
-                ", " + Math.round(z1 * 100) / 100.0 + ")");
-        System.out.println("x1-y2-z1 (" + Math.round(x1 * 100) / 100.0 + ", " + Math.round(y2 * 100) / 100.0 +
-                ", " + Math.round(z1 * 100) / 100.0 + ")");
-        System.out.println("x1-y1-z2 (" + Math.round(x1 * 100) / 100.0 + ", " + Math.round(y1 * 100) / 100.0 +
-                ", " + Math.round(z2 * 100) / 100.0 + ")");
-        System.out.println("x2-y2-z1 (" + Math.round(x2 * 100) / 100.0 + ", " + Math.round(y2 * 100) / 100.0 +
-                ", " + Math.round(z1 * 100) / 100.0 + ")");
-        System.out.println("x1-y2-z2 (" + Math.round(x1 * 100) / 100.0 + ", " + Math.round(y2 * 100) / 100.0 +
-                ", " + Math.round(z2 * 100) / 100.0 + ")");
-        System.out.println("x2-y1-z2 (" + Math.round(x2 * 100) / 100.0 + ", " + Math.round(y1 * 100) / 100.0 +
-                ", " + Math.round(z2 * 100) / 100.0 + ")");
-        System.out.println("x2-y2-z2 (" + Math.round(x2 * 100) / 100.0 + ", " + Math.round(y2 * 100) / 100.0 +
-                ", " + Math.round(z2 * 100) / 100.0 + ")");
+        System.out.printf(Locale.ENGLISH, "x1-y1-z1 (%.2f, %.2f, %.2f)", this.getX1(), this.getY1(), z1);
+        System.out.println();
+        System.out.printf(Locale.ENGLISH, "x2-y1-z1 (%.2f, %.2f, %.2f)", this.getX2(), this.getY1(), z1);
+        System.out.println();
+        System.out.printf(Locale.ENGLISH, "x1-y2-z1 (%.2f, %.2f, %.2f)", this.getX1(), this.getY2(), z1);
+        System.out.println();
+        System.out.printf(Locale.ENGLISH, "x1-y1-z2 (%.2f, %.2f, %.2f)", this.getX1(), this.getY1(), z2);
+        System.out.println();
+        System.out.printf(Locale.ENGLISH, "x2-y2-z1 (%.2f, %.2f, %.2f)", this.getX2(), this.getY2(), z1);
+        System.out.println();
+        System.out.printf(Locale.ENGLISH, "x1-y2-z2 (%.2f, %.2f, %.2f)", this.getX1(), this.getY2(), z2);
+        System.out.println();
+        System.out.printf(Locale.ENGLISH, "x2-y1-z2 (%.2f, %.2f, %.2f)", this.getX2(), this.getY1(), z2);
+        System.out.println();
+        System.out.printf(Locale.ENGLISH, "x2-y2-z2 (%.2f, %.2f, %.2f)", this.getX2(), this.getY2(), z2);
+        System.out.println();
     }
 
     public void moveTo(double dX, double dY, double dZ) {
