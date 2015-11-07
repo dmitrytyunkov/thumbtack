@@ -25,12 +25,12 @@ public abstract class Figure implements Colored {
         return color;
     }
 
-    public void setColor(String colorString) throws ColorException {
-        Color.fromString(colorString);
-        color = Color.getColor();
-    }
-
-    public void setColor(Color color){
-        this.color = color;
+    public void setColor(String colorString) {
+        try {
+            Color.fromString(colorString);
+            color = Color.getColor();
+        } catch (ColorException ex) {
+            color = Color.BLACK;
+        }
     }
 }

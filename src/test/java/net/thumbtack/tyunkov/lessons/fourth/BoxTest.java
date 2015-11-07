@@ -11,6 +11,9 @@ import static org.junit.Assert.*;
 public class BoxTest {
 	
 	// REVU why here ? Move to appropriate class
+    // Это из занятия 4, задание 11. Там сказано написать статический generic метод, в классе
+    // где находится main. А т.к. у меня нет отдельной функции с main, я написал этот метод здесь.
+    // Так можно или сделать класс с main?
     static <T> boolean isSameSquareStatic(Box<? extends Figure> first, Box<? extends Figure> second) {
         final double EPS = 1.0E-6;
         return Math.abs(first.square() - second.square()) < EPS;

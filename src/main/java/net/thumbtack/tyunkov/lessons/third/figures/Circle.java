@@ -17,11 +17,7 @@ public class Circle extends Figure {
     public Circle(Point2D center, double radius, String colorString) {
         this.center = center;
         this.radius = radius;
-        try {
-            setColor(colorString);
-        } catch (ColorException ex) {
-            setColor(Color.BLACK);
-        }
+        setColor(colorString);
     }
 
     public Circle(Point2D center, double radius) {

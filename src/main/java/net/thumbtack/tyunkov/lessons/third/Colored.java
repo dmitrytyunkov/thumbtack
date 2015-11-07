@@ -10,6 +10,4 @@ public interface Colored {
     Color getColor();
 
     void setColor(String color) throws ColorException;
-
-    void setColor(Color color);
 }

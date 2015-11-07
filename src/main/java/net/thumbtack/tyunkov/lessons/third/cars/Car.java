@@ -22,11 +22,7 @@ public class Car implements Colored {
         this.brand = brand;
         this.weight = weight;
         this.maxSpeed = maxSpeed;
-        try {
-            setColor(colorString);
-        } catch (ColorException ex) {
-            setColor(Color.BLACK);
-        }
+        setColor(colorString);
     }
 
     public void printInfo() {
@@ -39,14 +35,13 @@ public class Car implements Colored {
         return color;
     }
 
-    public void setColor(String colorString) throws ColorException {
-        Color.fromString(colorString);
-        color = Color.getColor();
-    }
-
-    @Override
-    public void setColor(Color color) {
-        this.color = color;
+    public void setColor(String colorString) {
+        try {
+            Color.fromString(colorString);
+            color = Color.getColor();
+        } catch (ColorException ex) {
+            color = Color.BLACK;
+        }
     }
 
     public String getBrand() {
