@@ -4,7 +4,7 @@ import net.thumbtack.tyunkov.lessons.fourth.Color;
 import net.thumbtack.tyunkov.lessons.third.cars.Car;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by dmitry on 01.11.15.

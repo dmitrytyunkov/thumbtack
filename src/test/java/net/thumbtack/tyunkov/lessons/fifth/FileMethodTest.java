@@ -3,7 +3,6 @@ package net.thumbtack.tyunkov.lessons.fifth;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 
 import static org.junit.Assert.*;
@@ -37,13 +36,13 @@ public class FileMethodTest {
 
     @Test
     public void testAbsoluteNameFile() {
-        assertEquals("/home/dmitry/temp.dat",file.getAbsolutePath());
+        assertEquals("/home/dmitry/temp.dat", file.getAbsolutePath());
     }
 
     @Test
     public void testIsDirectory() {
         dir.mkdir();
-        assertTrue("Directory not found",dir.exists());
+        assertTrue("Directory not found", dir.exists());
         assertTrue(dir.isDirectory());
         assertFalse(dir.isFile());
         dir.delete();
@@ -56,7 +55,7 @@ public class FileMethodTest {
         } catch (IOException ex) {
             fail("IOException");
         }
-        assertTrue("File not found",file.exists());
+        assertTrue("File not found", file.exists());
         assertFalse(file.isDirectory());
         assertTrue(file.isFile());
         file.delete();
@@ -66,9 +65,9 @@ public class FileMethodTest {
     public void testListFiles() {
         File parrentDir = new File("/home/dmitry/Thumbtack/src");
         File[] files = parrentDir.listFiles();
-        File[] files1 = { new File("/home/dmitry/Thumbtack/src/test"),
-                new File("/home/dmitry/Thumbtack/src/main") };
-        assertArrayEquals(files1,files);
+        File[] files1 = {new File("/home/dmitry/Thumbtack/src/test"),
+                new File("/home/dmitry/Thumbtack/src/main")};
+        assertArrayEquals(files1, files);
     }
 
     @Test
@@ -76,6 +75,6 @@ public class FileMethodTest {
         File parrentDir = new File("/home/dmitry/Thumbtack");
         File[] files = parrentDir.listFiles((dir, name) -> name.endsWith(".iml"));
         File[] files1 = {new File("/home/dmitry/Thumbtack/Thumbtack.iml")};
-        assertArrayEquals(files1,files);
+        assertArrayEquals(files1, files);
     }
 }

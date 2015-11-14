@@ -3,7 +3,8 @@ package net.thumbtack.tyunkov.lessons.fifth;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * Created by dmitry on 01.11.15.
@@ -20,11 +21,11 @@ public class TraineeTest {
 
     @Test
     public void testConstructorIncorrectName() {
-       try {
-           Trainee trainee = new Trainee(null, "Tyunkov", 3);
-       } catch (TraineeException ex) {
-           assertThat(ex.getMessage(), is("Name incorrect"));
-       }
+        try {
+            Trainee trainee = new Trainee(null, "Tyunkov", 3);
+        } catch (TraineeException ex) {
+            assertThat(ex.getMessage(), is("Name incorrect"));
+        }
     }
 
     @Test

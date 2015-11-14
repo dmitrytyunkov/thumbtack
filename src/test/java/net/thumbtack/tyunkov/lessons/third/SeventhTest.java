@@ -1,6 +1,5 @@
 package net.thumbtack.tyunkov.lessons.third;
 
-import net.thumbtack.tyunkov.lessons.fourth.Color;
 import net.thumbtack.tyunkov.lessons.third.cars.Car;
 import net.thumbtack.tyunkov.lessons.third.figures.Circle;
 import net.thumbtack.tyunkov.lessons.third.figures.Point2D;

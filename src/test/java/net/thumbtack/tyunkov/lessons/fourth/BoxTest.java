@@ -9,8 +9,8 @@ import static org.junit.Assert.*;
  * Created by dmitry on 25.10.15.
  */
 public class BoxTest {
-	
-	// REVU why here ? Move to appropriate class
+
+    // REVU why here ? Move to appropriate class
     // Это из занятия 4, задание 11. Там сказано написать статический generic метод, в классе
     // где находится main. А т.к. у меня нет отдельной функции с main, я написал этот метод здесь.
     // Так можно или сделать класс с main?

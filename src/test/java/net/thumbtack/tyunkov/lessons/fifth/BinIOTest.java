@@ -1,21 +1,21 @@
 package net.thumbtack.tyunkov.lessons.fifth;
 
-import com.sun.javafx.scene.layout.region.Margins;
-import net.thumbtack.tyunkov.lessons.third.figures.*;
+import net.thumbtack.tyunkov.lessons.third.figures.Rectangle;
 import org.junit.Test;
 
 import java.io.*;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Created by dmitry on 01.11.15.
  */
-public class FileIOTest {
+public class BinIOTest {
 
     @Test
     public void testOutputStream() {
-        Rectangle rectangle = new Rectangle(0,0,1,1);
+        Rectangle rectangle = new Rectangle(0, 0, 1, 1);
         try (FileOutputStream fileOutputStream = new FileOutputStream("rectangle.dat")) {
             fileOutputStream.write(new Double(rectangle.getX1()).intValue());
             fileOutputStream.write(new Double(rectangle.getY1()).intValue());
@@ -48,10 +48,10 @@ public class FileIOTest {
     public void testOutputInputStream() {
         Rectangle[] rectangles = new Rectangle[5];
         rectangles[0] = new Rectangle();
-        rectangles[1] = new Rectangle(2,3);
-        rectangles[2] = new Rectangle(0,0,2,2);
-        rectangles[3] = new Rectangle(3,3);
-        rectangles[4] = new Rectangle(1,1,3,5);
+        rectangles[1] = new Rectangle(2, 3);
+        rectangles[2] = new Rectangle(0, 0, 2, 2);
+        rectangles[3] = new Rectangle(3, 3);
+        rectangles[4] = new Rectangle(1, 1, 3, 5);
         try (FileOutputStream fileOutputStream = new FileOutputStream("rectangles.dat")) {
             for (int i = 0; i < rectangles.length; i++) {
                 fileOutputStream.write(new Double(rectangles[i].getX1()).intValue());
@@ -67,31 +67,27 @@ public class FileIOTest {
         assertTrue(new File("rectangles.dat").exists());
         Rectangle[] rectangles1 = new Rectangle[5];
         try (FileInputStream fileInputStream = new FileInputStream("rectangles.dat")) {
-            fileInputStream.skip(16);
+            fileInputStream.skip(20);
             for (int i = 0; i < rectangles1.length; i++) {
+                fileInputStream.skip(-4);
                 byte[] bytes = new byte[4];
                 fileInputStream.read(bytes);
                 rectangles1[i] = new Rectangle(bytes[0], bytes[1], bytes[2], bytes[3]);
-                if (i != rectangles1.length - 1)
-                    fileInputStream.skip(-8);
+                fileInputStream.skip(-4);
             }
         } catch (FileNotFoundException ex) {
             fail(ex.getMessage());
         } catch (IOException ex) {
             fail(ex.getMessage());
         }
-        assertTrue(rectangles1[0].equals(rectangles[4]));
-        assertTrue(rectangles1[1].equals(rectangles[3]));
-        assertTrue(rectangles1[2].equals(rectangles[2]));
-        assertTrue(rectangles1[3].equals(rectangles[1]));
-        assertTrue(rectangles1[4].equals(rectangles[0]));
+        for (int i = 0; i < rectangles1.length; i++)
+            assertTrue(rectangles1[i].equals(rectangles[4 - i]));
     }
 
     @Test
     public void testPrintStream() {
         Rectangle rectangle = new Rectangle();
-        try (PrintStream printStream = new PrintStream("printRectangle.dat"))
-        {
+        try (PrintStream printStream = new PrintStream("printRectangle.dat")) {
             printStream.print(new Double(rectangle.getX1()).intValue());
             printStream.print(new Double(rectangle.getY1()).intValue());
             printStream.print(new Double(rectangle.getX2()).intValue());

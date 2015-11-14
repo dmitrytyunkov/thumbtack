@@ -10,9 +10,9 @@ public class Trainee {
     int mark;
 
     public Trainee(String name, String lastName, int mark) throws TraineeException {
-            setName(name);
-            setLastName(lastName);
-            setMark(mark);
+        setName(name);
+        setLastName(lastName);
+        setMark(mark);
     }
 
     public String getName() {

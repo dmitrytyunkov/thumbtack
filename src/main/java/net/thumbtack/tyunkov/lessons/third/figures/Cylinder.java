@@ -1,7 +1,6 @@
 package net.thumbtack.tyunkov.lessons.third.figures;
 
 
-import net.thumbtack.tyunkov.lessons.fifth.ColorException;
 import net.thumbtack.tyunkov.lessons.fourth.Color;
 
 import java.util.Locale;
