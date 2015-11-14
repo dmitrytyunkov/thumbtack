@@ -2,12 +2,14 @@ package net.thumbtack.tyunkov.lessons.fifth;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.Serializable;
+
 /**
  * Created by dmitry on 01.11.15.
  */
-public class Trainee {
-    String name, lastName;
-    int mark;
+public class Trainee implements Serializable {
+    private String name, lastName;
+    private int mark;
 
     public Trainee(String name, String lastName, int mark) throws TraineeException {
         setName(name);

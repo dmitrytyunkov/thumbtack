@@ -15,8 +15,11 @@ public class BinIOTest {
 
     @Test
     public void testOutputStream() {
+        File file = new File("rectangle.dat");
+        if (file.exists())
+            file.delete();
         Rectangle rectangle = new Rectangle(0, 0, 1, 1);
-        try (FileOutputStream fileOutputStream = new FileOutputStream("rectangle.dat")) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
             fileOutputStream.write(new Double(rectangle.getX1()).intValue());
             fileOutputStream.write(new Double(rectangle.getY1()).intValue());
             fileOutputStream.write(new Double(rectangle.getX2()).intValue());
@@ -32,6 +35,9 @@ public class BinIOTest {
 
     @Test
     public void testInputStream() {
+        File file = new File("rectangle.dat");
+        if (!file.exists())
+            testOutputStream();
         byte[] bytes = new byte[4];
         try (FileInputStream fileInputStream = new FileInputStream("rectangle.dat")) {
             fileInputStream.read(bytes);
@@ -46,6 +52,9 @@ public class BinIOTest {
 
     @Test
     public void testOutputInputStream() {
+        File file = new File("rectangles.dat");
+        if (file.exists())
+            file.delete();
         Rectangle[] rectangles = new Rectangle[5];
         rectangles[0] = new Rectangle();
         rectangles[1] = new Rectangle(2, 3);
@@ -86,12 +95,15 @@ public class BinIOTest {
 
     @Test
     public void testPrintStream() {
+        File file = new File("printRectangle.dat");
+        if (file.exists())
+            file.delete();
         Rectangle rectangle = new Rectangle();
-        try (PrintStream printStream = new PrintStream("printRectangle.dat")) {
-            printStream.print(new Double(rectangle.getX1()).intValue());
-            printStream.print(new Double(rectangle.getY1()).intValue());
-            printStream.print(new Double(rectangle.getX2()).intValue());
-            printStream.println(new Double(rectangle.getY2()).intValue());
+        try (PrintStream printStream = new PrintStream(file)) {
+            printStream.write(new Double(rectangle.getX1()).intValue());
+            printStream.write(new Double(rectangle.getY1()).intValue());
+            printStream.write(new Double(rectangle.getX2()).intValue());
+            printStream.write(new Double(rectangle.getY2()).intValue());
         } catch (FileNotFoundException ex) {
             fail(ex.getMessage());
         }
