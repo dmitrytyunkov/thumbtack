@@ -9,7 +9,9 @@ import net.thumbtack.tyunkov.lessons.third.Colored;
  */
 public class Car implements Colored {
 
-    private String brand = new String();
+    // REVU why do you initialize brand here with empty string ?
+	// unnecessary. Constructors will do all initializations
+	private String brand = new String();
     private int weight;
     private int maxSpeed;
     private Color color;
