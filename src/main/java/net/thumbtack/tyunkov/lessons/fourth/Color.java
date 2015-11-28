@@ -8,8 +8,10 @@ import net.thumbtack.tyunkov.lessons.fifth.ColorException;
 public enum Color {
     RED, GREEN, BLUE, YELLOW, WHITE, BLACK;
 
+	// REVU you do not need in this field at all
     private static Color color;
 
+    // REVU this method must return Color (or throw exception)
     public static void fromString(String colorString) throws ColorException {
         try {
             color = Color.valueOf(colorString);
@@ -18,6 +20,7 @@ public enum Color {
         }
     }
 
+    // REVU this method is unnecessary
     public static Color getColor() {
         return color;
     }

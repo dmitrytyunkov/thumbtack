@@ -10,6 +10,8 @@ import java.util.Locale;
  */
 public class Circle extends Figure {
 
+	// REVU Circle has Point2D as center, but Rectangle
+	// has four doubles. Why ?
     private Point2D center;
     private double radius;
 
