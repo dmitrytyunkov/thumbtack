@@ -27,8 +27,7 @@ public abstract class Figure implements Colored {
 
     public void setColor(String colorString) {
         try {
-            Color.fromString(colorString);
-            color = Color.getColor();
+            color = Color.fromString(colorString);
         } catch (ColorException ex) {
             color = Color.BLACK;
         }

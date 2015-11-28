@@ -9,9 +9,7 @@ import net.thumbtack.tyunkov.lessons.third.Colored;
  */
 public class Car implements Colored {
 
-    // REVU why do you initialize brand here with empty string ?
-	// unnecessary. Constructors will do all initializations
-	private String brand = new String();
+	private String brand;
     private int weight;
     private int maxSpeed;
     private Color color;
@@ -39,8 +37,7 @@ public class Car implements Colored {
 
     public void setColor(String colorString) {
         try {
-            Color.fromString(colorString);
-            color = Color.getColor();
+            color = Color.fromString(colorString);
         } catch (ColorException ex) {
             color = Color.BLACK;
         }
