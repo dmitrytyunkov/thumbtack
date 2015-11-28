@@ -5,7 +5,7 @@ package net.thumbtack.tyunkov.lessons.errorCodes;
  */
 public enum InstituteErrorCode {
     TITLE_INCORRECT("Title incorrect"),
-    TRAINEE_INCORRECT("Trainee incorrect");
+    CITY_INCORRECT("Trainee incorrect");
 
     private final String errorString;
 

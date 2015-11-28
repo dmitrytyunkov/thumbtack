@@ -1,10 +1,7 @@
 package net.thumbtack.tyunkov.lessons;
 
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
-import com.sun.xml.internal.ws.encoding.MtomCodec;
 import net.thumbtack.tyunkov.lessons.fifth.Trainee;
 import net.thumbtack.tyunkov.lessons.fifth.TraineeException;
-import net.thumbtack.tyunkov.lessons.third.figures.Rectangle3D;
 import org.apache.commons.lang3.SerializationUtils;
 import org.junit.Test;
 
@@ -73,7 +70,7 @@ public class SerializeTest {
             fail(ex.getMessage());
         }
         byte[] bytes = byteArrayOutputStream.toByteArray();
-        ByteArrayInputStream byteArrayInputStream = new ByteInputStream(bytes, bytes.length);
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
         try (ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream)) {
             trainee1 = (Trainee)objectInputStream.readObject();
         } catch (IOException ex) {

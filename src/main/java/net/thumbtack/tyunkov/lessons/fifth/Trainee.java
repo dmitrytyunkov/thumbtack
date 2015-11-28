@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Created by dmitry on 01.11.15.
  */
-public class Trainee implements Serializable {
+public class Trainee implements Serializable, Comparable {
     private String name, lastName;
     private int mark;
 
@@ -66,5 +66,15 @@ public class Trainee implements Serializable {
         result = 31 * result + lastName.hashCode();
         result = 31 * result + mark;
         return result;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Trainee trainee = (Trainee) o;
+        return this.name.compareTo(trainee.name);
+    }
+
+    public String toString() {
+        return "fist name: " + name + "\tlast name: " + lastName + "\tmark: " + mark;
     }
 }
