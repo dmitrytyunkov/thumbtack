@@ -32,6 +32,7 @@ public class BlankFragment extends Fragment {
     int min = 0;
     int max = 0;
     int current = 0;
+    StringBuilder stringBuilder;
 
 
     public BlankFragment() {
@@ -45,6 +46,15 @@ public class BlankFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blank, container, false);
         ButterKnife.bind(this, view);
+        stringBuilder = new StringBuilder(getString(R.string.current_value_label).concat(" "));
+        stringBuilder.append(current);
+        currentValueLabel.setText(stringBuilder);
+        stringBuilder = new StringBuilder(getString(R.string.min_value_label).concat(" "));
+        stringBuilder.append(min);
+        minValueLabel.setText(stringBuilder);
+        stringBuilder = new StringBuilder(getString(R.string.max_value_label).concat(" "));
+        stringBuilder.append(max);
+        maxValueLabel.setText(stringBuilder);
         return view;
     }
 
@@ -58,35 +68,45 @@ public class BlankFragment extends Fragment {
 
     @OnClick(R.id.increment_button)
     public void onIncrementButtonClick() {
-        currentValueLabel.setText(String.format("Current value: %d", ++current));
+        stringBuilder = new StringBuilder(getString(R.string.current_value_label).concat(" "));
+        stringBuilder.append(++current);
+        currentValueLabel.setText(stringBuilder);
     }
 
     @OnClick(R.id.decrement_button)
     public void onDecrementButtonClick() {
-        currentValueLabel.setText(String.format("Current value: %d", --current));
+        stringBuilder = new StringBuilder(getString(R.string.current_value_label).concat(" "));
+        stringBuilder.append(--current);
+        currentValueLabel.setText(stringBuilder);
     }
 
     @OnClick(R.id.set_min_value_button)
     public void onSetMinValueButtonClick() {
         min = current;
-        minValueLabel.setText(String.format("Min value: %d", min));
+        stringBuilder = new StringBuilder(getString(R.string.min_value_label).concat(" "));
+        stringBuilder.append(min);
+        minValueLabel.setText(stringBuilder);
     }
 
     @OnClick(R.id.set_max_value_button)
     public void onSetMaxValueButtonClick() {
         max = current;
-        maxValueLabel.setText(String.format("Max value: %d", max));
+        stringBuilder = new StringBuilder(getString(R.string.max_value_label).concat(" "));
+        stringBuilder.append(max);
+        maxValueLabel.setText(stringBuilder);
     }
 
     @OnClick(R.id.random_button)
     public void onToastButtonClick() {
         String toastString;
-        if (min < max) {
+        if (min > max)
+            Toast.makeText(getActivity(), R.string.error_toast, Toast.LENGTH_LONG).show();
+        else {
             int randomValue = new Random().nextInt(max - min + 1) + min;
-            toastString = String.format("Random value: %d", randomValue);
+            stringBuilder = new StringBuilder(getString(R.string.random_value_toast).concat(" "));
+            stringBuilder.append(randomValue);
+            Toast.makeText(getActivity(), stringBuilder, Toast.LENGTH_LONG).show();
         }
-        else
-            toastString = String.format("ERROR!!!%nMin value > Max value");
-        Toast.makeText(getActivity(), toastString, Toast.LENGTH_LONG).show();
+
     }
 }
