@@ -2,7 +2,7 @@
     <string name="app_name">HW-Android-School</string>
 
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">0</string>
     <string name="increment">Increment</string>
     <string name="decrement">Decrement</string>
     <string name="toast_message">Toast message</string>
