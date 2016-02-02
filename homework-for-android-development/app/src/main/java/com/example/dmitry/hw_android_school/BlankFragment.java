@@ -41,17 +41,42 @@ public class BlankFragment extends Fragment {
 
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            current = savedInstanceState.getInt("current", 0);
+            min = savedInstanceState.getInt("min", 0);
+            max = savedInstanceState.getInt("max", 0);
+        }
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("current", current);
+        outState.putInt("min", min);
+        outState.putInt("max", max);
+    }
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blank, container, false);
         ButterKnife.bind(this, view);
+
         stringBuilder = new StringBuilder(getString(R.string.current_value_label).concat(" "));
         stringBuilder.append(current);
         currentValueLabel.setText(stringBuilder);
+
         stringBuilder = new StringBuilder(getString(R.string.min_value_label).concat(" "));
         stringBuilder.append(min);
         minValueLabel.setText(stringBuilder);
+
         stringBuilder = new StringBuilder(getString(R.string.max_value_label).concat(" "));
         stringBuilder.append(max);
         maxValueLabel.setText(stringBuilder);
