@@ -7,9 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -20,6 +22,8 @@ public class BlankFragment extends Fragment {
 
     @Bind(R.id.counter_label)
     TextView counterLabel;
+
+    int counter = 0;
 
     public BlankFragment() {
         // Required empty public constructor
@@ -40,5 +44,23 @@ public class BlankFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+
+    @OnClick(R.id.increment_button)
+    public void onIncrementButtonClick() {
+        counterLabel.setText(String.format("Value: %d", ++counter));
+    }
+
+
+    @OnClick(R.id.decrement_button)
+    public void onDecrementButtonClick() {
+        counterLabel.setText(String.format("Value: %d", --counter));
+    }
+
+
+    @OnClick(R.id.toast_button)
+    public void onToastButtonClick() {
+        Toast.makeText(getActivity(), R.string.toast_message, Toast.LENGTH_LONG).show();
     }
 }

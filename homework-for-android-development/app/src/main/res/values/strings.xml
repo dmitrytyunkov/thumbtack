@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">HW-Android-School</string>
+    <string name="app_name">Counter</string>
 
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">0</string>
-    <string name="increment">Increment</string>
-    <string name="decrement">Decrement</string>
-    <string name="toast_message">Toast message</string>
+    <string name="counter_label">Value: 0</string>
+    <string name="increment_button">Increment</string>
+    <string name="decrement_button">Decrement</string>
+    <string name="toast_message_button">Toast</string>
+    <string name="toast_message">Toast message!</string>
 </resources>
