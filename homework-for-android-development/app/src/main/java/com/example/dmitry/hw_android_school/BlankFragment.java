@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -20,10 +22,17 @@ import butterknife.OnClick;
 public class BlankFragment extends Fragment {
 
 
-    @Bind(R.id.counter_label)
-    TextView counterLabel;
+    @Bind(R.id.min_value_label)
+    TextView minValueLabel;
+    @Bind(R.id.max_value_label)
+    TextView maxValueLabel;
+    @Bind(R.id.current_value_label)
+    TextView currentValueLabel;
 
-    int counter = 0;
+    int min = 0;
+    int max = 0;
+    int current = 0;
+
 
     public BlankFragment() {
         // Required empty public constructor
@@ -49,18 +58,35 @@ public class BlankFragment extends Fragment {
 
     @OnClick(R.id.increment_button)
     public void onIncrementButtonClick() {
-        counterLabel.setText(String.format("Value: %d", ++counter));
+        currentValueLabel.setText(String.format("Current value: %d", ++current));
     }
-
 
     @OnClick(R.id.decrement_button)
     public void onDecrementButtonClick() {
-        counterLabel.setText(String.format("Value: %d", --counter));
+        currentValueLabel.setText(String.format("Current value: %d", --current));
     }
 
+    @OnClick(R.id.set_min_value_button)
+    public void onSetMinValueButtonClick() {
+        min = current;
+        minValueLabel.setText(String.format("Min value: %d", min));
+    }
 
-    @OnClick(R.id.toast_button)
+    @OnClick(R.id.set_max_value_button)
+    public void onSetMaxValueButtonClick() {
+        max = current;
+        maxValueLabel.setText(String.format("Max value: %d", max));
+    }
+
+    @OnClick(R.id.random_button)
     public void onToastButtonClick() {
-        Toast.makeText(getActivity(), R.string.toast_message, Toast.LENGTH_LONG).show();
+        String toastString;
+        if (min < max) {
+            int randomValue = new Random().nextInt(max - min + 1) + min;
+            toastString = String.format("Random value: %d", randomValue);
+        }
+        else
+            toastString = String.format("ERROR!!!%nMin value > Max value");
+        Toast.makeText(getActivity(), toastString, Toast.LENGTH_LONG).show();
     }
 }

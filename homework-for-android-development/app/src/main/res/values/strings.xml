@@ -1,10 +1,13 @@
 <resources>
-    <string name="app_name">Counter</string>
+    <string name="app_name">Random generator</string>
 
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="counter_label">Value: 0</string>
-    <string name="increment_button">Increment</string>
-    <string name="decrement_button">Decrement</string>
-    <string name="toast_message_button">Toast</string>
-    <string name="toast_message">Toast message!</string>
+    <string name="min_value_label">Min value: 0</string>
+    <string name="increment_min_button">Increment</string>
+    <string name="decrement_min_button">Decrement</string>
+    <string name="random_button">Generate</string>
+    <string name="max_value_label">Max value: 0</string>
+    <string name="current_value_label">Current value: 0</string>
+    <string name="set_min_value_button">Set min value</string>
+    <string name="set_max_value_string">Set max value</string>
 </resources>
