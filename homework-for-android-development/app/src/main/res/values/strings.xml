@@ -3,4 +3,7 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="increment">Increment</string>
+    <string name="decrement">Decrement</string>
+    <string name="toast_message">Toast message</string>
 </resources>
