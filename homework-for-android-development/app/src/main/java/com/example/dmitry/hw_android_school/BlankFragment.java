@@ -22,6 +22,9 @@ import butterknife.OnClick;
 public class BlankFragment extends Fragment {
 
 
+    public static final String MAX = "max";
+    public static final String MIN = "min";
+    public static final String CURRENT = "current";
     @Bind(R.id.min_value_label)
     TextView minValueLabel;
     @Bind(R.id.max_value_label)
@@ -29,10 +32,11 @@ public class BlankFragment extends Fragment {
     @Bind(R.id.current_value_label)
     TextView currentValueLabel;
 
-    int min = 0;
-    int max = 0;
-    int current = 0;
-    StringBuilder stringBuilder;
+    private int min = 0;
+    private int max = 0;
+    private int current = 0;
+    private StringBuilder stringBuilder;
+    private final Random random = new Random();
 
 
     public BlankFragment() {
@@ -45,9 +49,9 @@ public class BlankFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState != null) {
-            current = savedInstanceState.getInt("current", 0);
-            min = savedInstanceState.getInt("min", 0);
-            max = savedInstanceState.getInt("max", 0);
+            current = savedInstanceState.getInt(CURRENT, 0);
+            min = savedInstanceState.getInt(MIN, 0);
+            max = savedInstanceState.getInt(MAX, 0);
         }
     }
 
@@ -56,9 +60,9 @@ public class BlankFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putInt("current", current);
-        outState.putInt("min", min);
-        outState.putInt("max", max);
+        outState.putInt(CURRENT, current);
+        outState.putInt(MIN, min);
+        outState.putInt(MAX, max);
     }
 
 
@@ -127,7 +131,7 @@ public class BlankFragment extends Fragment {
         if (min > max)
             Toast.makeText(getActivity(), R.string.error_toast, Toast.LENGTH_LONG).show();
         else {
-            int randomValue = new Random().nextInt(max - min + 1) + min;
+            int randomValue = random.nextInt(max - min + 1) + min;
             stringBuilder = new StringBuilder(getString(R.string.random_value_toast).concat(" "));
             stringBuilder.append(randomValue);
             Toast.makeText(getActivity(), stringBuilder, Toast.LENGTH_LONG).show();
