@@ -2,18 +2,14 @@
     <string name="app_name">Random generator</string>
 
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="min_value_label">Min value</string>
-    <string name="increment_min_button">Increment</string>
-    <string name="decrement_min_button">Decrement</string>
-    <string name="random_button">Generate</string>
-    <string name="max_value_label">Max value</string>
-    <string name="current_value_label">Current value</string>
-    <string name="set_min_value_button">Set min value</string>
-    <string name="set_max_value_string">Set max value</string>
-    <string name="random_value_toast">Random value</string>
-    <string name="message_toast">GENERATED!!!</string>
-    <string name="error_toast">ERROR!!! Min value > Max value</string>
-    <string name="quantity_label">Quantity: </string>
-    <string name="decimal_places_label">Decimal places:</string>
+    <string name="min_value_label">Minimum value</string>
+    <string name="max_value_label">Maximum value</string>
+    <string name="quantity_label">Quantity:</string>
+    <!--<string name="decimal_places_label">Decimal places:</string>-->
     <string name="result_label">Result:</string>
+    <string name="random_button">Generate</string>
+    <string name="copy_button">Copy to clipboard</string>
+    <string name="copy_toast">Copied to Clipboard!</string>
+    <string name="error_generate_toast">ERROR! Maximum value should be larger than Minimum value</string>
+    <string name="error_copy_toast">ERROR! Result is empty</string>
 </resources>

@@ -1,12 +1,17 @@
 package com.example.dmitry.hw_android_school;
 
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +26,11 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlankFragment extends Fragment {
+public class MainFragment extends Fragment {
 
 
     public static final String RESULT = "result";
+    public static final String RESULT_CLIP = "result_clip";
     @Bind(R.id.min_value_text)
     EditText minValueText;
     @Bind(R.id.max_value_text)
@@ -50,7 +56,7 @@ public class BlankFragment extends Fragment {
     private final Random random = new Random();
 
 
-    public BlankFragment() {
+    public MainFragment() {
         // Required empty public constructor
     }
 
@@ -75,7 +81,7 @@ public class BlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blank, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
 
         stringBuilder = new StringBuilder(getString(R.string.quantity_label).concat(" "));
@@ -152,8 +158,27 @@ public class BlankFragment extends Fragment {
                 resultString.append(String.valueOf(randomValue));
                 resultLabel.setText(resultString);
             }
-            else
-                Toast.makeText(getActivity(), R.string.error_toast, Toast.LENGTH_LONG).show();
+            else {
+                Toast toast = Toast.makeText(getActivity(), R.string.error_generate_toast, Toast.LENGTH_SHORT);
+                LinearLayout linearLayout = (LinearLayout) toast.getView();
+                if (linearLayout.getChildCount() > 0) {
+                    TextView textView = (TextView) linearLayout.getChildAt(0);
+                    textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                }
+                toast.show();
+            }
         }
+    }
+
+    @OnClick(R.id.copy_button)
+    public void onCopyButtonClick() {
+        if (resultLabel.getText().length() != 0) {
+            ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText(RESULT_CLIP, resultLabel.getText().toString());
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(getActivity(), R.string.copy_toast, Toast.LENGTH_SHORT).show();
+        }
+        else
+            Toast.makeText(getActivity(), R.string.error_copy_toast, Toast.LENGTH_SHORT).show();
     }
 }
