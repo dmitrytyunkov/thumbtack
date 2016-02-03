@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Random generator</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="min_value_label">Minimum value</string>
     <string name="max_value_label">Maximum value</string>
     <string name="quantity_label">Quantity:</string>
-    <!--<string name="decimal_places_label">Decimal places:</string>-->
+    <string name="decimal_places_label">Decimal places:</string>
     <string name="result_label">Result:</string>
     <string name="random_button">Generate</string>
     <string name="copy_button">Copy to clipboard</string>
@@ -14,4 +14,5 @@
     <string name="error_generate_toast">ERROR! Maximum value should be larger than Minimum value</string>
     <string name="error_copy_toast">ERROR! Result is empty</string>
     <string name="error_quantity_generate_toast">ERROR! Cannot generate a selected number of non repeated numbers</string>
+    <string name="error_parse_toast">ERROR! The numbers should be in the range from -2147483648 to 2147483647</string>
 </resources>

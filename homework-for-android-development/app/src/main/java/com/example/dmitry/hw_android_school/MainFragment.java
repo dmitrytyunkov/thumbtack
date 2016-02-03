@@ -18,9 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import butterknife.Bind;
@@ -36,6 +35,7 @@ public class MainFragment extends Fragment {
 
     public static final String RESULT = "result";
     public static final String RESULT_CLIP = "result_clip";
+    private final Random random = new Random();
     @Bind(R.id.min_value_text)
     EditText minValueText;
     @Bind(R.id.max_value_text)
@@ -48,17 +48,16 @@ public class MainFragment extends Fragment {
     TextView resultLabel;
     @Bind(R.id.not_repeating_check_box)
     CheckBox notRepeatingCheckBox;
-    /*    @Bind(R.id.decimal_places_label)
-        TextView decimalPlacesLabel;
-        @Bind(R.id.decimal_places_seek_bar)
-        SeekBar decimalPlacesSeekBar;*/
+    @Bind(R.id.decimal_places_label)
+    TextView decimalPlacesLabel;
+    @Bind(R.id.decimal_places_seek_bar)
+    SeekBar decimalPlacesSeekBar;
 
     private int quantity = 0;
-    //private int decimalPlaces = 0;
+    private int decimalPlaces = 0;
     private StringBuilder stringBuilder;
     private StringBuilder resultString = new StringBuilder();
-    private final Random random = new Random();
-    private List<Integer> listRandomValue = new ArrayList<>();
+    private List<Double> listRandomValue = new ArrayList<>();
 
 
     public MainFragment() {
@@ -112,7 +111,7 @@ public class MainFragment extends Fragment {
             }
         });
 
-/*        stringBuilder = new StringBuilder(getString(R.string.decimal_places_label).concat(" "));
+        stringBuilder = new StringBuilder(getString(R.string.decimal_places_label).concat(" "));
         stringBuilder.append(decimalPlacesSeekBar.getProgress());
         decimalPlacesLabel.setText(stringBuilder);
         decimalPlacesSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -133,7 +132,7 @@ public class MainFragment extends Fragment {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
-        });*/
+        });
 
         resultLabel.setText(resultString);
 
@@ -148,40 +147,28 @@ public class MainFragment extends Fragment {
     }
 
 
+    Double roundDouble(Double d, int precise) {
+        precise = (int) Math.pow(10, precise);
+        d = d * precise;
+        int i = (int) Math.round(d);
+        return (double) i / precise;
+    }
+
+
     @OnClick(R.id.random_button)
     public void onRandomButtonClick() {
         if (minValueText.getText().length() != 0 && maxValueText.getText().length() != 0) {
-            int min = Integer.parseInt(minValueText.getText().toString());
-            int max = Integer.parseInt(maxValueText.getText().toString());
-            Integer randomValue;
-            resultString = new StringBuilder();
-            if (min < max) {
-                for (int i = 0; i < quantity + 1; ++i) {
-                    randomValue = random.nextInt(max - min + 1) + min;
-                    if (notRepeatingCheckBox.isChecked()) {
-                        if (max - min < quantity) {
-                            Toast toast = Toast.makeText(getActivity(), R.string.error_quantity_generate_toast, Toast.LENGTH_SHORT);
-                            LinearLayout linearLayout = (LinearLayout) toast.getView();
-                            if (linearLayout.getChildCount() > 0) {
-                                TextView textView = (TextView) linearLayout.getChildAt(0);
-                                textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-                            }
-                            toast.show();
-                            break;
-                        }
-                        if (!listRandomValue.isEmpty() && listRandomValue.contains(randomValue)) {
-                            --i;
-                            continue;
-                        }
-                    }
-                    listRandomValue.add(randomValue);
-                }
-                resultString.append(listRandomValue.toString().substring(1,
-                        listRandomValue.toString().length() - 1));
-                listRandomValue.clear();
-                resultLabel.setText(resultString);
-            } else {
-                Toast toast = Toast.makeText(getActivity(), R.string.error_generate_toast, Toast.LENGTH_SHORT);
+            boolean isErrorParse = false;
+            int min = 0;
+            int max = 0;
+            Double randomValue;
+            try {
+                min = Integer.parseInt(minValueText.getText().toString());
+                max = Integer.parseInt(maxValueText.getText().toString());
+            } catch (NumberFormatException ex) {
+                isErrorParse = true;
+                Toast toast = Toast.makeText(getActivity(),
+                        R.string.error_parse_toast, Toast.LENGTH_SHORT);
                 LinearLayout linearLayout = (LinearLayout) toast.getView();
                 if (linearLayout.getChildCount() > 0) {
                     TextView textView = (TextView) linearLayout.getChildAt(0);
@@ -189,13 +176,54 @@ public class MainFragment extends Fragment {
                 }
                 toast.show();
             }
+            resultString = new StringBuilder();
+            if (!isErrorParse)
+                if (min < max) {
+                    for (int i = 0; i < quantity + 1; ++i) {
+                        randomValue = roundDouble(random.nextDouble() * (max - min) + min, decimalPlaces);
+                        if (notRepeatingCheckBox.isChecked()) {
+                            if ((decimalPlaces == 0 && max - min < quantity) || (decimalPlaces > 0 && quantity * decimalPlaces > (max - min) * 10 * decimalPlaces)) {
+                                Toast toast = Toast.makeText(getActivity(),
+                                        R.string.error_quantity_generate_toast, Toast.LENGTH_SHORT);
+                                LinearLayout linearLayout = (LinearLayout) toast.getView();
+                                if (linearLayout.getChildCount() > 0) {
+                                    TextView textView = (TextView) linearLayout.getChildAt(0);
+                                    textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                                }
+                                toast.show();
+                                break;
+                            }
+                            if (!listRandomValue.isEmpty() && listRandomValue.contains(randomValue)) {
+                                --i;
+                                continue;
+                            }
+                        }
+                        listRandomValue.add(randomValue);
+                    }
+                    for (Double d : listRandomValue)
+                        resultString.append(String.format(Locale.ENGLISH, "%." + decimalPlaces + "f; ", d));
+                    if (resultString.length() > 0)
+                        resultString.delete(resultString.length() - 2, resultString.length() - 1);
+                    listRandomValue.clear();
+                    resultLabel.setText(resultString);
+                } else {
+                    Toast toast = Toast.makeText(getActivity(), R.string.error_generate_toast,
+                            Toast.LENGTH_SHORT);
+                    LinearLayout linearLayout = (LinearLayout) toast.getView();
+                    if (linearLayout.getChildCount() > 0) {
+                        TextView textView = (TextView) linearLayout.getChildAt(0);
+                        textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                    }
+                    toast.show();
+                }
         }
     }
 
     @OnClick(R.id.copy_button)
     public void onCopyButtonClick() {
         if (resultLabel.getText().length() != 0) {
-            ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipboardManager clipboard =
+                    (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText(RESULT_CLIP, resultLabel.getText().toString());
             clipboard.setPrimaryClip(clip);
             Toast.makeText(getActivity(), R.string.copy_toast, Toast.LENGTH_SHORT).show();

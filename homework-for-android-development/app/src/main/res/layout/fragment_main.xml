@@ -56,27 +56,27 @@
                 android:max="24"
                 android:progress="0" />
 
+            <TextView
+                android:id="@+id/decimal_places_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/decimal_places_label"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/decimal_places_seek_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:max="6"
+                android:progress="0" />
+
             <CheckBox
                 android:id="@+id/not_repeating_check_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="14dp"
-                android:text="@string/not_repeating_check_box"/>
-
-            <!--        <TextView
-                        android:id="@+id/decimal_places_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/decimal_places_label"
-                        android:textSize="18sp" />
-
-                    <SeekBar
-                        android:id="@+id/decimal_places_seek_bar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:max="6"
-                        android:progress="0"
-                        android:layout_marginBottom="14dp" />-->
+                android:text="@string/not_repeating_check_box" />
 
             <TextView
                 android:id="@+id/result_text_label"
@@ -106,16 +106,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textAllCaps="false"
-            android:text="@string/random_button" />
+            android:text="@string/random_button"
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/copy_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textAllCaps="false"
-            android:text="@string/copy_button" />
+            android:text="@string/copy_button"
+            android:textAllCaps="false" />
 
     </LinearLayout>
 
