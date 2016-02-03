@@ -13,4 +13,7 @@
     <string name="random_value_toast">Random value</string>
     <string name="message_toast">GENERATED!!!</string>
     <string name="error_toast">ERROR!!! Min value > Max value</string>
+    <string name="quantity_label">Quantity: </string>
+    <string name="decimal_places_label">Decimal places:</string>
+    <string name="result_label">Result:</string>
 </resources>
