@@ -10,12 +10,17 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Random;
 
 import butterknife.Bind;
@@ -39,21 +44,21 @@ public class MainFragment extends Fragment {
     TextView quantityLabel;
     @Bind(R.id.quantity_seek_bar)
     SeekBar quantitySeekBar;
-/*    @Bind(R.id.decimal_places_label)
-    TextView decimalPlacesLabel;
-    @Bind(R.id.decimal_places_seek_bar)
-    SeekBar decimalPlacesSeekBar;*/
     @Bind(R.id.result_label)
     TextView resultLabel;
+    @Bind(R.id.not_repeating_check_box)
+    CheckBox notRepeatingCheckBox;
+    /*    @Bind(R.id.decimal_places_label)
+        TextView decimalPlacesLabel;
+        @Bind(R.id.decimal_places_seek_bar)
+        SeekBar decimalPlacesSeekBar;*/
 
-    private int min = 0;
-    private int max = 0;
-    private int randomValue = 0;
     private int quantity = 0;
     //private int decimalPlaces = 0;
     private StringBuilder stringBuilder;
     private StringBuilder resultString = new StringBuilder();
     private final Random random = new Random();
+    private List<Integer> listRandomValue = new ArrayList<>();
 
 
     public MainFragment() {
@@ -146,19 +151,36 @@ public class MainFragment extends Fragment {
     @OnClick(R.id.random_button)
     public void onRandomButtonClick() {
         if (minValueText.getText().length() != 0 && maxValueText.getText().length() != 0) {
-            min = Integer.parseInt(minValueText.getText().toString());
-            max = Integer.parseInt(maxValueText.getText().toString());
+            int min = Integer.parseInt(minValueText.getText().toString());
+            int max = Integer.parseInt(maxValueText.getText().toString());
+            Integer randomValue;
             resultString = new StringBuilder();
             if (min < max) {
-                for (int i = 0; i < quantity; ++i) {
+                for (int i = 0; i < quantity + 1; ++i) {
                     randomValue = random.nextInt(max - min + 1) + min;
-                    resultString.append(String.valueOf(randomValue).concat(", "));
+                    if (notRepeatingCheckBox.isChecked()) {
+                        if (max - min < quantity) {
+                            Toast toast = Toast.makeText(getActivity(), R.string.error_quantity_generate_toast, Toast.LENGTH_SHORT);
+                            LinearLayout linearLayout = (LinearLayout) toast.getView();
+                            if (linearLayout.getChildCount() > 0) {
+                                TextView textView = (TextView) linearLayout.getChildAt(0);
+                                textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                            }
+                            toast.show();
+                            break;
+                        }
+                        if (!listRandomValue.isEmpty() && listRandomValue.contains(randomValue)) {
+                            --i;
+                            continue;
+                        }
+                    }
+                    listRandomValue.add(randomValue);
                 }
-                randomValue = random.nextInt(max - min + 1) + min;
-                resultString.append(String.valueOf(randomValue));
+                resultString.append(listRandomValue.toString().substring(1,
+                        listRandomValue.toString().length() - 1));
+                listRandomValue.clear();
                 resultLabel.setText(resultString);
-            }
-            else {
+            } else {
                 Toast toast = Toast.makeText(getActivity(), R.string.error_generate_toast, Toast.LENGTH_SHORT);
                 LinearLayout linearLayout = (LinearLayout) toast.getView();
                 if (linearLayout.getChildCount() > 0) {
@@ -177,8 +199,7 @@ public class MainFragment extends Fragment {
             ClipData clip = ClipData.newPlainText(RESULT_CLIP, resultLabel.getText().toString());
             clipboard.setPrimaryClip(clip);
             Toast.makeText(getActivity(), R.string.copy_toast, Toast.LENGTH_SHORT).show();
-        }
-        else
+        } else
             Toast.makeText(getActivity(), R.string.error_copy_toast, Toast.LENGTH_SHORT).show();
     }
 }

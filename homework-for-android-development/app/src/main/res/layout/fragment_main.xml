@@ -56,6 +56,13 @@
                 android:max="24"
                 android:progress="0" />
 
+            <CheckBox
+                android:id="@+id/not_repeating_check_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:text="@string/not_repeating_check_box"/>
+
             <!--        <TextView
                         android:id="@+id/decimal_places_label"
                         android:layout_width="wrap_content"

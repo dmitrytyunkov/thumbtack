@@ -9,7 +9,9 @@
     <string name="result_label">Result:</string>
     <string name="random_button">Generate</string>
     <string name="copy_button">Copy to clipboard</string>
+    <string name="not_repeating_check_box">Not repeating numbers</string>
     <string name="copy_toast">Copied to Clipboard!</string>
     <string name="error_generate_toast">ERROR! Maximum value should be larger than Minimum value</string>
     <string name="error_copy_toast">ERROR! Result is empty</string>
+    <string name="error_quantity_generate_toast">ERROR! Cannot generate a selected number of non repeated numbers</string>
 </resources>
