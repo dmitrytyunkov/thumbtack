@@ -29,6 +29,7 @@
                     android:layout_weight="1"
                     android:hint="@string/min_value_label"
                     android:inputType="numberSigned"
+                    android:maxLength="14"
                     android:nextFocusDown="@+id/max_value_text" />
 
                 <EditText
@@ -37,7 +38,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="@string/max_value_label"
-                    android:inputType="numberSigned" />
+                    android:inputType="numberSigned"
+                    android:maxLength="13" />
 
             </LinearLayout>
 

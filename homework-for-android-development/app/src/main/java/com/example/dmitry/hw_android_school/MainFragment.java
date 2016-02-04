@@ -17,6 +17,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -56,9 +58,9 @@ public class MainFragment extends Fragment {
 
     private int quantity = 0;
     private int decimalPlaces = 0;
-    private StringBuilder stringBuilder;
+    private StringBuilder stringBuilder = new StringBuilder();
     private StringBuilder resultString = new StringBuilder();
-    private List<Double> listRandomValue = new ArrayList<>();
+    private List<BigDecimal> listRandomValue = new ArrayList<>();
 
 
     public MainFragment() {
@@ -148,13 +150,6 @@ public class MainFragment extends Fragment {
     }
 
 
-    private Double roundDouble(Double d, int precise) {
-        precise = (int) Math.pow(10, precise);
-        d = d * precise;
-        int i = (int) Math.round(d);
-        return (double) i / precise;
-    }
-
     private Toast toastTextAlignment(Toast toast) {
         LinearLayout linearLayout = (LinearLayout) toast.getView();
         if (linearLayout.getChildCount() > 0) {
@@ -171,26 +166,17 @@ public class MainFragment extends Fragment {
         clipboard.setPrimaryClip(clip);
     }
 
-    private StringBuilder stringBuilderFormation(List<Double> listSource, int decimalPlaces) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Double d : listSource)
-            stringBuilder.append(String.format(Locale.ENGLISH, "%." + decimalPlaces + "f; ", d));
-        if (stringBuilder.length() > 0)
-            stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length() - 1);
-        return stringBuilder;
-    }
-
 
     @OnClick(R.id.random_button)
     public void onRandomButtonClick() {
         if (minValueText.getText().length() != 0 && maxValueText.getText().length() != 0) {
             boolean isErrorParse = false;
-            int min = 0;
-            int max = 0;
-            Double randomValue;
+            long min = 0;
+            long max = 0;
+            BigDecimal randomValue;
             try {
-                min = Integer.parseInt(minValueText.getText().toString());
-                max = Integer.parseInt(maxValueText.getText().toString());
+                min = Long.parseLong(minValueText.getText().toString());
+                max = Long.parseLong(maxValueText.getText().toString());
             } catch (NumberFormatException ex) {
                 isErrorParse = true;
                 toastTextAlignment(Toast.makeText(getActivity(),
@@ -200,9 +186,10 @@ public class MainFragment extends Fragment {
             if (!isErrorParse)
                 if (min < max) {
                     for (int i = 0; i < quantity + 1; ++i) {
-                        randomValue = roundDouble(random.nextDouble() * (max - min) + min, decimalPlaces);
+                        randomValue = new BigDecimal(random.nextDouble() * (max - min) + min);
+                        randomValue = randomValue.setScale(decimalPlaces, BigDecimal.ROUND_HALF_UP);
                         if (notRepeatingCheckBox.isChecked()) {
-                            if ((decimalPlaces == 0 && max - min < quantity) || (decimalPlaces > 0 && quantity * decimalPlaces > (max - min) * 10 * decimalPlaces)) {
+                            if ((decimalPlaces == 0 && max - min < quantity) || (decimalPlaces > 0 && quantity * decimalPlaces > (max - min) * Math.pow(10, decimalPlaces))) {
                                 toastTextAlignment(Toast.makeText(getActivity(),
                                         R.string.error_quantity_generate_toast, Toast.LENGTH_SHORT)).show();
                                 break;
@@ -214,7 +201,11 @@ public class MainFragment extends Fragment {
                         }
                         listRandomValue.add(randomValue);
                     }
-                    resultString = stringBuilderFormation(listRandomValue, decimalPlaces);
+                    resultString.append(listRandomValue);
+                    if (resultString.length() > 0) {
+                        resultString.deleteCharAt(0);
+                        resultString.deleteCharAt(resultString.length() - 1);
+                    }
                     resultLabel.setText(resultString);
                     listRandomValue.clear();
                 } else {
