@@ -36,6 +36,7 @@ public class MainFragment extends Fragment {
     public static final String RESULT = "result";
     public static final String RESULT_CLIP = "result_clip";
     private final Random random = new Random();
+
     @Bind(R.id.min_value_text)
     EditText minValueText;
     @Bind(R.id.max_value_text)
@@ -147,11 +148,36 @@ public class MainFragment extends Fragment {
     }
 
 
-    Double roundDouble(Double d, int precise) {
+    private Double roundDouble(Double d, int precise) {
         precise = (int) Math.pow(10, precise);
         d = d * precise;
         int i = (int) Math.round(d);
         return (double) i / precise;
+    }
+
+    private Toast toastTextAlignment(Toast toast) {
+        LinearLayout linearLayout = (LinearLayout) toast.getView();
+        if (linearLayout.getChildCount() > 0) {
+            TextView textView = (TextView) linearLayout.getChildAt(0);
+            textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        }
+        return toast;
+    }
+
+    private void copyToClipboard(String label, String text) {
+        ClipboardManager clipboard =
+                (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText(label, text);
+        clipboard.setPrimaryClip(clip);
+    }
+
+    private StringBuilder stringBuilderFormation(List<Double> listSource, int decimalPlaces) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Double d : listSource)
+            stringBuilder.append(String.format(Locale.ENGLISH, "%." + decimalPlaces + "f; ", d));
+        if (stringBuilder.length() > 0)
+            stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length() - 1);
+        return stringBuilder;
     }
 
 
@@ -167,14 +193,8 @@ public class MainFragment extends Fragment {
                 max = Integer.parseInt(maxValueText.getText().toString());
             } catch (NumberFormatException ex) {
                 isErrorParse = true;
-                Toast toast = Toast.makeText(getActivity(),
-                        R.string.error_parse_toast, Toast.LENGTH_SHORT);
-                LinearLayout linearLayout = (LinearLayout) toast.getView();
-                if (linearLayout.getChildCount() > 0) {
-                    TextView textView = (TextView) linearLayout.getChildAt(0);
-                    textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-                }
-                toast.show();
+                toastTextAlignment(Toast.makeText(getActivity(),
+                        R.string.error_parse_toast, Toast.LENGTH_SHORT)).show();
             }
             resultString = new StringBuilder();
             if (!isErrorParse)
@@ -183,14 +203,8 @@ public class MainFragment extends Fragment {
                         randomValue = roundDouble(random.nextDouble() * (max - min) + min, decimalPlaces);
                         if (notRepeatingCheckBox.isChecked()) {
                             if ((decimalPlaces == 0 && max - min < quantity) || (decimalPlaces > 0 && quantity * decimalPlaces > (max - min) * 10 * decimalPlaces)) {
-                                Toast toast = Toast.makeText(getActivity(),
-                                        R.string.error_quantity_generate_toast, Toast.LENGTH_SHORT);
-                                LinearLayout linearLayout = (LinearLayout) toast.getView();
-                                if (linearLayout.getChildCount() > 0) {
-                                    TextView textView = (TextView) linearLayout.getChildAt(0);
-                                    textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-                                }
-                                toast.show();
+                                toastTextAlignment(Toast.makeText(getActivity(),
+                                        R.string.error_quantity_generate_toast, Toast.LENGTH_SHORT)).show();
                                 break;
                             }
                             if (!listRandomValue.isEmpty() && listRandomValue.contains(randomValue)) {
@@ -200,21 +214,12 @@ public class MainFragment extends Fragment {
                         }
                         listRandomValue.add(randomValue);
                     }
-                    for (Double d : listRandomValue)
-                        resultString.append(String.format(Locale.ENGLISH, "%." + decimalPlaces + "f; ", d));
-                    if (resultString.length() > 0)
-                        resultString.delete(resultString.length() - 2, resultString.length() - 1);
-                    listRandomValue.clear();
+                    resultString = stringBuilderFormation(listRandomValue, decimalPlaces);
                     resultLabel.setText(resultString);
+                    listRandomValue.clear();
                 } else {
-                    Toast toast = Toast.makeText(getActivity(), R.string.error_generate_toast,
-                            Toast.LENGTH_SHORT);
-                    LinearLayout linearLayout = (LinearLayout) toast.getView();
-                    if (linearLayout.getChildCount() > 0) {
-                        TextView textView = (TextView) linearLayout.getChildAt(0);
-                        textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-                    }
-                    toast.show();
+                    toastTextAlignment(Toast.makeText(getActivity(), R.string.error_generate_toast,
+                            Toast.LENGTH_SHORT)).show();
                 }
         }
     }
@@ -222,12 +227,10 @@ public class MainFragment extends Fragment {
     @OnClick(R.id.copy_button)
     public void onCopyButtonClick() {
         if (resultLabel.getText().length() != 0) {
-            ClipboardManager clipboard =
-                    (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clip = ClipData.newPlainText(RESULT_CLIP, resultLabel.getText().toString());
-            clipboard.setPrimaryClip(clip);
-            Toast.makeText(getActivity(), R.string.copy_toast, Toast.LENGTH_SHORT).show();
+            copyToClipboard(RESULT_CLIP, resultLabel.getText().toString());
+            toastTextAlignment(Toast.makeText(getActivity(),
+                    R.string.copy_toast, Toast.LENGTH_SHORT)).show();
         } else
-            Toast.makeText(getActivity(), R.string.error_copy_toast, Toast.LENGTH_SHORT).show();
+            toastTextAlignment(Toast.makeText(getActivity(), R.string.error_copy_toast, Toast.LENGTH_SHORT)).show();
     }
 }
