@@ -14,5 +14,5 @@
     <string name="error_generate_toast">ERROR! Maximum value should be larger than Minimum value</string>
     <string name="error_copy_toast">ERROR! Result is empty</string>
     <string name="error_quantity_generate_toast">ERROR! Cannot generate a selected number of non repeated numbers</string>
-    <string name="error_parse_toast">ERROR! Minimum and Maximum values  should be in the range from -4 611 686 018 427 387 904 to 4 611 686 018 427 387 903</string>
+    <string name="error_parse_toast">ERROR! Minimum and Maximum values should be in the range from -4 611 686 018 427 387 904 to 4 611 686 018 427 387 903</string>
 </resources>

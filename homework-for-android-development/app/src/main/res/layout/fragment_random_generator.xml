@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context="com.example.dmitry.random_generator.MainFragment">
+    tools:context="com.example.dmitry.random_generator.RandomGeneratorFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView

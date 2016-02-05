@@ -31,7 +31,7 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment {
+public class RandomGeneratorFragment extends Fragment {
 
 
     public static final String RESULT = "result";
@@ -57,12 +57,11 @@ public class MainFragment extends Fragment {
 
     private int quantity = 0;
     private int decimalPlaces = 0;
-    /*private StringBuilder stringBuilder = new StringBuilder();*/
-    private String resultString = new String();
+    private String resultString = "";
     private List<BigDecimal> listRandomValue = new ArrayList<>();
 
 
-    public MainFragment() {
+    public RandomGeneratorFragment() {
         // Required empty public constructor
     }
 
@@ -87,7 +86,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_random_generator, container, false);
         ButterKnife.bind(this, view);
 
         quantityLabel.setText(String.format(Locale.US, "%s %d",
