@@ -1,4 +1,4 @@
-package com.example.dmitry.hw_android_school;
+package com.example.dmitry.random_generator;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

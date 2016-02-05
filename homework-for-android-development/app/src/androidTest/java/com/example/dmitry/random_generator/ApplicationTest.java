@@ -1,4 +1,4 @@
-package com.example.dmitry.hw_android_school;
+package com.example.dmitry.random_generator;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

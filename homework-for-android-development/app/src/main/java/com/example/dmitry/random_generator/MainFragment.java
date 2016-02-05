@@ -1,4 +1,4 @@
-package com.example.dmitry.hw_android_school;
+package com.example.dmitry.random_generator;
 
 
 import android.content.ClipData;
@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -58,8 +57,8 @@ public class MainFragment extends Fragment {
 
     private int quantity = 0;
     private int decimalPlaces = 0;
-    private StringBuilder stringBuilder = new StringBuilder();
-    private StringBuilder resultString = new StringBuilder();
+    /*private StringBuilder stringBuilder = new StringBuilder();*/
+    private String resultString = new String();
     private List<BigDecimal> listRandomValue = new ArrayList<>();
 
 
@@ -73,7 +72,7 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState != null) {
-            resultString = new StringBuilder(savedInstanceState.getString(RESULT, ""));
+            resultString = savedInstanceState.getString(RESULT, "");
         }
     }
 
@@ -81,7 +80,7 @@ public class MainFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putString(RESULT, resultString.toString());
+        outState.putString(RESULT, resultString);
     }
 
     @Override
@@ -91,16 +90,14 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
 
-        stringBuilder = new StringBuilder(getString(R.string.quantity_label).concat(" "));
-        stringBuilder.append(quantitySeekBar.getProgress() + 1);
-        quantityLabel.setText(stringBuilder);
+        quantityLabel.setText(String.format(Locale.US, "%s %d",
+                getString(R.string.quantity_label), quantitySeekBar.getProgress() + 1));
         quantitySeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 quantity = progress;
-                stringBuilder = new StringBuilder(getString(R.string.quantity_label).concat(" "));
-                stringBuilder.append(quantity + 1);
-                quantityLabel.setText(stringBuilder);
+                quantityLabel.setText(String.format(Locale.US, "%s %d",
+                        getString(R.string.quantity_label), quantity + 1));
             }
 
             @Override
@@ -114,16 +111,14 @@ public class MainFragment extends Fragment {
             }
         });
 
-        stringBuilder = new StringBuilder(getString(R.string.decimal_places_label).concat(" "));
-        stringBuilder.append(decimalPlacesSeekBar.getProgress());
-        decimalPlacesLabel.setText(stringBuilder);
+        decimalPlacesLabel.setText(String.format(Locale.US, "%s %d",
+                getString(R.string.decimal_places_label), decimalPlacesSeekBar.getProgress()));
         decimalPlacesSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 decimalPlaces = progress;
-                stringBuilder = new StringBuilder(getString(R.string.decimal_places_label).concat(" "));
-                stringBuilder.append(decimalPlaces);
-                decimalPlacesLabel.setText(stringBuilder);
+                decimalPlacesLabel.setText(String.format(Locale.US, "%s %d",
+                        getString(R.string.decimal_places_label), decimalPlaces));
             }
 
             @Override
@@ -166,6 +161,15 @@ public class MainFragment extends Fragment {
         clipboard.setPrimaryClip(clip);
     }
 
+    private StringBuilder stringBuilderFormation(List<BigDecimal> listSource, int decimalPlaces) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (BigDecimal bigDecimal : listSource)
+            stringBuilder.append(String.format(Locale.US, "%." + decimalPlaces + "f, ", bigDecimal));
+        if (stringBuilder.length() > 0)
+            stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length() - 1);
+        return stringBuilder;
+    }
+
 
     @OnClick(R.id.random_button)
     public void onRandomButtonClick() {
@@ -182,7 +186,7 @@ public class MainFragment extends Fragment {
                 toastTextAlignment(Toast.makeText(getActivity(),
                         R.string.error_parse_toast, Toast.LENGTH_SHORT)).show();
             }
-            resultString = new StringBuilder();
+            resultString = "";
             if (!isErrorParse)
                 if (min < max) {
                     for (int i = 0; i < quantity + 1; ++i) {
@@ -201,16 +205,12 @@ public class MainFragment extends Fragment {
                         }
                         listRandomValue.add(randomValue);
                     }
-                    resultString.append(listRandomValue);
-                    if (resultString.length() > 0) {
-                        resultString.deleteCharAt(0);
-                        resultString.deleteCharAt(resultString.length() - 1);
-                    }
+                    resultString = stringBuilderFormation(listRandomValue, decimalPlaces).toString();
                     resultLabel.setText(resultString);
                     listRandomValue.clear();
                 } else {
-                    toastTextAlignment(Toast.makeText(getActivity(), R.string.error_generate_toast,
-                            Toast.LENGTH_SHORT)).show();
+                    toastTextAlignment(Toast.makeText(getActivity(),
+                            R.string.error_generate_toast, Toast.LENGTH_SHORT)).show();
                 }
         }
     }
@@ -222,6 +222,7 @@ public class MainFragment extends Fragment {
             toastTextAlignment(Toast.makeText(getActivity(),
                     R.string.copy_toast, Toast.LENGTH_SHORT)).show();
         } else
-            toastTextAlignment(Toast.makeText(getActivity(), R.string.error_copy_toast, Toast.LENGTH_SHORT)).show();
+            toastTextAlignment(Toast.makeText(getActivity(),
+                    R.string.error_copy_toast, Toast.LENGTH_SHORT)).show();
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Random generator</string>
+    <string name="app_name" translatable="false">Random generator</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="min_value_label">Minimum value</string>
@@ -9,10 +9,10 @@
     <string name="result_label">Result:</string>
     <string name="random_button">Generate</string>
     <string name="copy_button">Copy to clipboard</string>
-    <string name="not_repeating_check_box">Not repeating numbers</string>
+    <string name="not_repeating_check_box">Non repeating numbers</string>
     <string name="copy_toast">Copied to Clipboard!</string>
     <string name="error_generate_toast">ERROR! Maximum value should be larger than Minimum value</string>
     <string name="error_copy_toast">ERROR! Result is empty</string>
     <string name="error_quantity_generate_toast">ERROR! Cannot generate a selected number of non repeated numbers</string>
-    <string name="error_parse_toast">ERROR! The numbers should be in the range from -4611686018427387904 to 4611686018427387903</string>
+    <string name="error_parse_toast">ERROR! Minimum and Maximum values  should be in the range from -4 611 686 018 427 387 904 to 4 611 686 018 427 387 903</string>
 </resources>
