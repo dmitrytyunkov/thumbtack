@@ -1,4 +1,4 @@
-package com.example.dmitry.hws_android_school;
+package com.example.dmitry.hws_android_school.ui.random_generator;
 
 
 import android.content.ClipData;
@@ -17,6 +17,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dmitry.hws_android_school.R;
+import com.example.dmitry.hws_android_school.ui.base.BaseFragment;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,7 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RandomGeneratorFragment extends Fragment {
+public class RandomGeneratorFragment extends BaseFragment {
 
 
     public static final String RESULT = "result";
