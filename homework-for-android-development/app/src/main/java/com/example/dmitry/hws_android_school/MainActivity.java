@@ -1,7 +1,7 @@
-package com.example.dmitry.hw_android_school;
+package com.example.dmitry.hws_android_school;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,6 +12,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null)
-            getSupportFragmentManager().beginTransaction().add(R.id.container, new BlankFragment()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.container, new RandomGeneratorFragment()).commit();
     }
 }

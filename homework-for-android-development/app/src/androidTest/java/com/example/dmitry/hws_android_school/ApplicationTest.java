@@ -1,4 +1,4 @@
-package com.example.dmitry.hw_android_school;
+package com.example.dmitry.hws_android_school;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

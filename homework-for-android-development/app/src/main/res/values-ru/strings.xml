@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    <string name="copy_button">Скопировать</string>
+    <string name="copy_toast">Скопировано в буфер обмена!</string>
+    <string name="decimal_places_label">Знаков после запятой:</string>
+    <string name="error_copy_toast">Ошибка! Результат пуст</string>
+    <string name="error_generate_toast">Ошибка! Максимальное значение должно быть больше минимального </string>
+    <string name="error_parse_toast">Ошибка! Максимальное и минимальное значения должны быть в интервале от -4 611 686 018 427 387 904 до 4 611 686 018 427 387 903</string>
+    <string name="error_quantity_generate_toast">Ошибка! Не удается сгенерировать выбранное количество не повторяющихся чисел</string>
+    <string name="min_value_label">Минимум</string>
+    <string name="not_repeating_check_box">Без повторяющихся чисел</string>
+    <string name="quantity_label">Количество:</string>
+    <string name="random_button">Сгенерировать</string>
+    <string name="result_label">Результат:</string>
+    <string name="max_value_label">Максимум</string>-->
+</resources>
