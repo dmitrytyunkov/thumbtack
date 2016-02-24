@@ -20,12 +20,12 @@ public class BaseActivity extends AppCompatActivity {
 
     private Bus bus;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bus = ((App) getApplication()).getBus();
     }
-
 
     @Override
     protected void onStart() {
@@ -44,17 +44,15 @@ public class BaseActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    // TODO: 10/02/16 Не нужно вызывать эти методы напрямую из фрагментов, используйте коллбэки или шину
+
     public void replaceFragment(Fragment fragment) {
         replaceFragment(fragment, true, null);
     }
 
-    // TODO: 10/02/16 Не нужно вызывать эти методы напрямую из фрагментов, используйте коллбэки или шину
     public void replaceFragment(Fragment fragment, boolean addToBackStack) {
         replaceFragment(fragment, addToBackStack, null);
     }
 
-    // TODO: 10/02/16 Не нужно вызывать эти методы напрямую из фрагментов, используйте коллбэки или шину
     public void replaceFragment(Fragment fragment, boolean addToBackStack, @Nullable String key) {
         FragmentTransaction replaceTransaction = getSupportFragmentManager()
                 .beginTransaction()
@@ -68,11 +66,7 @@ public class BaseActivity extends AppCompatActivity {
                 .commit();
     }
 
-    // TODO: 10/02/16 Не нужно вызывать эти методы напрямую из фрагментов, используйте коллбэки или шину
     public void returnToBackStack(String stackKey, boolean inclusive) {
-        //FragmentManager.POP_BACK_STACK_INCLUSIVE (1) - вытолкнуть из стэка и закрыть не только фрагменты выше
-        //добавленного по ключу, но и сам фрагмент, добавленный по ключу
-        //0 - вытолкнуть и закрыть только те, что выше
         getSupportFragmentManager()
                 .popBackStackImmediate(stackKey, inclusive ? FragmentManager.POP_BACK_STACK_INCLUSIVE : 0);
     }

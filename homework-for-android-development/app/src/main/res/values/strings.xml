@@ -20,4 +20,7 @@
     <string name="hw2_fragment">HW2 Fragment</string>
     <string name="hw1_button">HW1 (Random generator)</string>
     <string name="hw2_button">HW2</string>
+    <string name="new_activity_button">New Activity</string>
+    <string name="stack_activity_button">Stack Activity</string>
+    <string name="stack_fragment_button">Stack Fragment</string>
 </resources>

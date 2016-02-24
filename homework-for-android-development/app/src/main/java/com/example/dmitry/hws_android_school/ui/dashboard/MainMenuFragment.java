@@ -22,7 +22,7 @@ import butterknife.OnClick;
 public class MainMenuFragment extends BaseFragment {
 
 
-    private MainFragmentCallbacks callbacks;
+    private MainMenuFragmentCallbacks callbacks;
 
 
     public MainMenuFragment() {
@@ -33,8 +33,8 @@ public class MainMenuFragment extends BaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof MainFragmentCallbacks) {
-            callbacks = (MainFragmentCallbacks) context;
+        if (context instanceof MainMenuFragmentCallbacks) {
+            callbacks = (MainMenuFragmentCallbacks) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -72,7 +72,7 @@ public class MainMenuFragment extends BaseFragment {
     }
 
 
-    public interface MainFragmentCallbacks {
+    public interface MainMenuFragmentCallbacks {
         void onHW1ButtonPressed();
 
         void onHW2ButtonPressed();
