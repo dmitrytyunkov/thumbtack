@@ -17,7 +17,6 @@ import com.squareup.otto.Bus;
  */
 public class BaseActivity extends AppCompatActivity {
 
-
     private Bus bus;
 
 

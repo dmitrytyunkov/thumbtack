@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.dmitry.hws_android_school.R;
 import com.example.dmitry.hws_android_school.events.OpenNewActivityEvent;
+import com.example.dmitry.hws_android_school.events.OpenStackActivityEvent;
 import com.example.dmitry.hws_android_school.ui.base.BaseFragment;
 
 import butterknife.OnClick;
@@ -19,7 +20,6 @@ import butterknife.OnClick;
  * A simple {@link Fragment} subclass.
  */
 public class HW2Fragment extends BaseFragment {
-
 
     private HW2FragmentCallbacks callbacks;
 
@@ -62,11 +62,19 @@ public class HW2Fragment extends BaseFragment {
             callbacks.onNewActivityButtonPressed();
     }
 
+    @OnClick(R.id.stack_activity_button)
+    public void onStackActivityButtonClick() {
+/*        getBus().post(new OpenStackActivityEvent());*/
+
+        if (callbacks != null)
+            callbacks.onStackActivityButtonPressed();
+    }
+
 
     public interface HW2FragmentCallbacks {
         void onNewActivityButtonPressed();
 
-        void onActivityStackButtonPressed();
+        void onStackActivityButtonPressed();
 
         void onFragmentStackButtonPressed();
     }

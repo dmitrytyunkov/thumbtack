@@ -8,14 +8,15 @@ import com.example.dmitry.hws_android_school.R;
 import com.example.dmitry.hws_android_school.events.OpenHW2FragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenNewActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenRandomGeneratorFragmentEvent;
+import com.example.dmitry.hws_android_school.events.OpenStackActivityEvent;
 import com.example.dmitry.hws_android_school.ui.base.BaseActivity;
 import com.example.dmitry.hws_android_school.ui.hw2.HW2Fragment;
 import com.example.dmitry.hws_android_school.ui.new_activity.NewActivity;
 import com.example.dmitry.hws_android_school.ui.random_generator.RandomGeneratorFragment;
+import com.example.dmitry.hws_android_school.ui.stack_activity.Stack1Activity;
 import com.squareup.otto.Subscribe;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.MainMenuFragmentCallbacks, HW2Fragment.HW2FragmentCallbacks {
-
 
     @Override
     protected void onStop() {
@@ -53,6 +54,11 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.MainM
         startActivity(new Intent(this, NewActivity.class));
     }
 
+    @Subscribe
+    public void onOpenStackActivityEvent(OpenStackActivityEvent event) {
+        startActivity(new Intent(this, Stack1Activity.class));
+    }
+
 
     @Override
     public void onHW1ButtonPressed() {
@@ -70,8 +76,8 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.MainM
     }
 
     @Override
-    public void onActivityStackButtonPressed() {
-
+    public void onStackActivityButtonPressed() {
+        startActivity(new Intent(this, Stack1Activity.class));
     }
 
     @Override

@@ -36,7 +36,6 @@ import butterknife.OnClick;
  */
 public class RandomGeneratorFragment extends BaseFragment {
 
-
     public static final String RESULT = "result";
     public static final String RESULT_CLIP = "result_clip";
     private final Random random = new Random();

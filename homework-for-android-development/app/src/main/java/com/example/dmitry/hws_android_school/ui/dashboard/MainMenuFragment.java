@@ -21,7 +21,6 @@ import butterknife.OnClick;
  */
 public class MainMenuFragment extends BaseFragment {
 
-
     private MainMenuFragmentCallbacks callbacks;
 
 

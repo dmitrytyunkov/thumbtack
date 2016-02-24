@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.new_activity.NewActivity" />
+        <activity android:name=".ui.stack_activity.Stack1Activity" />
+        <activity android:name=".ui.stack_activity.Stack2Activity" />
+        <activity android:name=".ui.stack_activity.Stack3Activity" >
+        </activity>
     </application>
 
 </manifest>

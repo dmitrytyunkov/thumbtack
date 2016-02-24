@@ -14,8 +14,7 @@ import butterknife.ButterKnife;
  * Created by dmitry on 24.02.16.
  */
 public class BaseFragment extends Fragment {
-
-
+    
     private Bus bus;
 
     @Override
