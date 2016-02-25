@@ -65,8 +65,8 @@ public class BaseActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public void returnToBackStack(String stackKey, boolean inclusive) {
-        getSupportFragmentManager()
+    public boolean returnToBackStack(String stackKey, boolean inclusive) {
+        return getSupportFragmentManager()
                 .popBackStackImmediate(stackKey, inclusive ? FragmentManager.POP_BACK_STACK_INCLUSIVE : 0);
     }
 

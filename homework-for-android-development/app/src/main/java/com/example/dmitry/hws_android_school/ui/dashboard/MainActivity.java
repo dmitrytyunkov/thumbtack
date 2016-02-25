@@ -1,22 +1,33 @@
 package com.example.dmitry.hws_android_school.ui.dashboard;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.dmitry.hws_android_school.R;
+import com.example.dmitry.hws_android_school.events.OpenFragment1Event;
+import com.example.dmitry.hws_android_school.events.OpenFragment2Event;
+import com.example.dmitry.hws_android_school.events.OpenFragment3Event;
 import com.example.dmitry.hws_android_school.events.OpenHW2FragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenNewActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenRandomGeneratorFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenStackActivityEvent;
+import com.example.dmitry.hws_android_school.events.OpenStackFragmentEvent;
 import com.example.dmitry.hws_android_school.ui.base.BaseActivity;
 import com.example.dmitry.hws_android_school.ui.hw2.HW2Fragment;
 import com.example.dmitry.hws_android_school.ui.new_activity.NewActivity;
 import com.example.dmitry.hws_android_school.ui.random_generator.RandomGeneratorFragment;
 import com.example.dmitry.hws_android_school.ui.stack_activity.Stack1Activity;
+import com.example.dmitry.hws_android_school.ui.stack_fragment.Stack1Fragment;
+import com.example.dmitry.hws_android_school.ui.stack_fragment.Stack2Fragment;
+import com.example.dmitry.hws_android_school.ui.stack_fragment.Stack3Fragment;
 import com.squareup.otto.Subscribe;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.MainMenuFragmentCallbacks, HW2Fragment.HW2FragmentCallbacks {
+
+    public static final String FRAGMENT1 = "FRAGMENT1";
+    public static final String FRAGMENT2 = "FRAGMENT2";
+    public static final String FRAGMENT3 = "FRAGMENT3";
+
 
     @Override
     protected void onStop() {
@@ -59,6 +70,28 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.MainM
         startActivity(new Intent(this, Stack1Activity.class));
     }
 
+    @Subscribe
+    public void onOpenStackFragmentEvent(OpenStackFragmentEvent event) {
+        replaceFragment(new Stack1Fragment(), true, FRAGMENT1);
+    }
+
+    @Subscribe
+    public void onOpenFragment1Event(OpenFragment1Event event) {
+        returnToBackStack(FRAGMENT1, false);
+    }
+
+    @Subscribe
+    public void onOpenFragment2Event(OpenFragment2Event event) {
+        if (!returnToBackStack(FRAGMENT2, false))
+            replaceFragment(new Stack2Fragment(), true, FRAGMENT2);
+    }
+
+    @Subscribe
+    public void onOpenFragment3Event(OpenFragment3Event event) {
+        if (!returnToBackStack(FRAGMENT3, false))
+            replaceFragment(new Stack3Fragment(), true, FRAGMENT3);
+    }
+
 
     @Override
     public void onHW1ButtonPressed() {
@@ -81,7 +114,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.MainM
     }
 
     @Override
-    public void onFragmentStackButtonPressed() {
-
+    public void onStackFragmentButtonPressed() {
+        replaceFragment(new Stack1Fragment(), true);
     }
 }

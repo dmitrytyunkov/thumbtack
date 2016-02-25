@@ -29,4 +29,13 @@
     <string name="activity3_label">Activity 3</string>
     <string name="activity1_label">Activity 1</string>
     <string name="activity2_label">Activity 2</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment2_button">Fragment 2</string>
+    <string name="fragment3_button">Fragment 3</string>
+    <string name="fragment1_button">Fragment 1</string>
+    <string name="fragment1_label">Fragment 1</string>
+    <string name="fragment2_label">Fragment 2</string>
+    <string name="fragment3_label">Fragment 3</string>
 </resources>
