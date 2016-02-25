@@ -7,14 +7,22 @@ import com.example.dmitry.hws_android_school.R;
 import com.example.dmitry.hws_android_school.events.OpenFragment1Event;
 import com.example.dmitry.hws_android_school.events.OpenFragment2Event;
 import com.example.dmitry.hws_android_school.events.OpenFragment3Event;
+import com.example.dmitry.hws_android_school.events.OpenFrameLayoutFragmentEvent;
+import com.example.dmitry.hws_android_school.events.OpenGridLayoutFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenHW2MenuFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenHW3MenuFragmentEvent;
+import com.example.dmitry.hws_android_school.events.OpenLinearLayoutFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenNewActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenRandomGeneratorFragmentEvent;
+import com.example.dmitry.hws_android_school.events.OpenRelativeLayoutFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenStackActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenStackFragmentEvent;
 import com.example.dmitry.hws_android_school.ui.base.BaseActivity;
 import com.example.dmitry.hws_android_school.ui.hw2_menu.HW2MenuFragment;
+import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.FrameLayoutFragment;
+import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.GridLayoutFragment;
+import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.LinearLayoutFragment;
+import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.RelativeLayoutFragment;
 import com.example.dmitry.hws_android_school.ui.hw3_menu.HW3MenuFragment;
 import com.example.dmitry.hws_android_school.ui.new_activity.NewActivity;
 import com.example.dmitry.hws_android_school.ui.random_generator.RandomGeneratorFragment;
@@ -97,6 +105,26 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.MainM
     @Subscribe
     public void onOpenHW3MenuFragmentEvent(OpenHW3MenuFragmentEvent event) {
         replaceFragment(new HW3MenuFragment(), true);
+    }
+
+    @Subscribe
+    public void onOpenLinearLayoutFragmentEvent(OpenLinearLayoutFragmentEvent event) {
+        replaceFragment(new LinearLayoutFragment(), true);
+    }
+
+    @Subscribe
+    public void onOpenRelativeLayoutFragmentEvent(OpenRelativeLayoutFragmentEvent event) {
+        replaceFragment(new RelativeLayoutFragment(), true);
+    }
+
+    @Subscribe
+    public void onOpenFrameLayoutFragmentEvent(OpenFrameLayoutFragmentEvent event) {
+        replaceFragment(new FrameLayoutFragment(), true);
+    }
+
+    @Subscribe
+    public void onOpenGridLayoutFragmentEvent(OpenGridLayoutFragmentEvent event) {
+        replaceFragment(new GridLayoutFragment(), true);
     }
 
 
