@@ -55,6 +55,8 @@ public class FrameLayoutFragment extends BaseFragment {
     @OnClick(R.id.next_button)
     public void onNextButtonClick() {
         count++;
+                    //todo REVU you might want to use array for ids:         imageView.setImageResource(ids[imgCounter++]%ids.length);
+
         switch (count) {
             case 1:
                 imageView.setImageResource(R.drawable.volkswagen_png1776);
