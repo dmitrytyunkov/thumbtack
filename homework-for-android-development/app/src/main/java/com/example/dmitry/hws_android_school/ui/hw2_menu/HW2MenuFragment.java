@@ -1,4 +1,4 @@
-package com.example.dmitry.hws_android_school.ui.hw2;
+package com.example.dmitry.hws_android_school.ui.hw2_menu;
 
 
 import android.content.Context;
@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dmitry.hws_android_school.R;
-import com.example.dmitry.hws_android_school.events.OpenNewActivityEvent;
-import com.example.dmitry.hws_android_school.events.OpenStackActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenStackFragmentEvent;
 import com.example.dmitry.hws_android_school.ui.base.BaseFragment;
 
@@ -20,12 +18,12 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HW2Fragment extends BaseFragment {
+public class HW2MenuFragment extends BaseFragment {
 
     private HW2FragmentCallbacks callbacks;
 
 
-    public HW2Fragment() {
+    public HW2MenuFragment() {
         // Required empty public constructor
     }
 
@@ -51,7 +49,7 @@ public class HW2Fragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_hw2, container, false);
+        return inflater.inflate(R.layout.fragment_hw2_menu, container, false);
     }
 
 

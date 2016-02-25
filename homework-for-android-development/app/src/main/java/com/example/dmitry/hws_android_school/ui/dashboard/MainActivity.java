@@ -7,13 +7,15 @@ import com.example.dmitry.hws_android_school.R;
 import com.example.dmitry.hws_android_school.events.OpenFragment1Event;
 import com.example.dmitry.hws_android_school.events.OpenFragment2Event;
 import com.example.dmitry.hws_android_school.events.OpenFragment3Event;
-import com.example.dmitry.hws_android_school.events.OpenHW2FragmentEvent;
+import com.example.dmitry.hws_android_school.events.OpenHW2MenuFragmentEvent;
+import com.example.dmitry.hws_android_school.events.OpenHW3MenuFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenNewActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenRandomGeneratorFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenStackActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenStackFragmentEvent;
 import com.example.dmitry.hws_android_school.ui.base.BaseActivity;
-import com.example.dmitry.hws_android_school.ui.hw2.HW2Fragment;
+import com.example.dmitry.hws_android_school.ui.hw2_menu.HW2MenuFragment;
+import com.example.dmitry.hws_android_school.ui.hw3_menu.HW3MenuFragment;
 import com.example.dmitry.hws_android_school.ui.new_activity.NewActivity;
 import com.example.dmitry.hws_android_school.ui.random_generator.RandomGeneratorFragment;
 import com.example.dmitry.hws_android_school.ui.stack_activity.Stack1Activity;
@@ -22,7 +24,7 @@ import com.example.dmitry.hws_android_school.ui.stack_fragment.Stack2Fragment;
 import com.example.dmitry.hws_android_school.ui.stack_fragment.Stack3Fragment;
 import com.squareup.otto.Subscribe;
 
-public class MainActivity extends BaseActivity implements MainMenuFragment.MainMenuFragmentCallbacks, HW2Fragment.HW2FragmentCallbacks {
+public class MainActivity extends BaseActivity implements MainMenuFragment.MainMenuFragmentCallbacks, HW2MenuFragment.HW2FragmentCallbacks {
 
     public static final String FRAGMENT1 = "FRAGMENT1";
     public static final String FRAGMENT2 = "FRAGMENT2";
@@ -56,8 +58,8 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.MainM
     }
 
     @Subscribe
-    public void onOpenHW2FragmentEvent(OpenHW2FragmentEvent event) {
-        replaceFragment(new HW2Fragment(), true);
+    public void onOpenHW2MenuFragmentEvent(OpenHW2MenuFragmentEvent event) {
+        replaceFragment(new HW2MenuFragment(), true);
     }
 
     @Subscribe
@@ -92,6 +94,11 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.MainM
             replaceFragment(new Stack3Fragment(), true, FRAGMENT3);
     }
 
+    @Subscribe
+    public void onOpenHW3MenuFragmentEvent(OpenHW3MenuFragmentEvent event) {
+        replaceFragment(new HW3MenuFragment(), true);
+    }
+
 
     @Override
     public void onHW1ButtonPressed() {
@@ -99,8 +106,8 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.MainM
     }
 
     @Override
-    public void onHW2ButtonPressed() {
-        replaceFragment(new HW2Fragment(), true);
+    public void onHW2MenuButtonPressed() {
+        replaceFragment(new HW2MenuFragment(), true);
     }
 
     @Override

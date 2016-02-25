@@ -32,6 +32,14 @@
                 android:text="@string/hw2_button"
                 android:textAllCaps="false" />
 
+            <Button
+                android:id="@+id/hw3_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/hw3_button"
+                android:textAllCaps="false" />
+
         </LinearLayout>
 
     </ScrollView>

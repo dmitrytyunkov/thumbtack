@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dmitry.hws_android_school.R;
-import com.example.dmitry.hws_android_school.events.OpenHW2FragmentEvent;
+import com.example.dmitry.hws_android_school.events.OpenHW2MenuFragmentEvent;
+import com.example.dmitry.hws_android_school.events.OpenHW3MenuFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenRandomGeneratorFragmentEvent;
 import com.example.dmitry.hws_android_school.ui.base.BaseFragment;
 
@@ -64,16 +65,21 @@ public class MainMenuFragment extends BaseFragment {
 
     @OnClick(R.id.hw2_button)
     public void onHW2ButtonClick() {
-        getBus().post(new OpenHW2FragmentEvent());
+        getBus().post(new OpenHW2MenuFragmentEvent());
 
 /*        if (callbacks != null)
-            callbacks.onHW2ButtonPressed();*/
+            callbacks.onHW2MenuButtonPressed();*/
+    }
+
+    @OnClick(R.id.hw3_button)
+    public void onHW3ButtonClick() {
+        getBus().post(new OpenHW3MenuFragmentEvent());
     }
 
 
     public interface MainMenuFragmentCallbacks {
         void onHW1ButtonPressed();
 
-        void onHW2ButtonPressed();
+        void onHW2MenuButtonPressed();
     }
 }

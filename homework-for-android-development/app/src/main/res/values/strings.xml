@@ -38,4 +38,9 @@
     <string name="fragment1_label">Fragment 1</string>
     <string name="fragment2_label">Fragment 2</string>
     <string name="fragment3_label">Fragment 3</string>
+    <string name="hw3_button">HW3</string>
+    <string name="linear_button">Linear</string>
+    <string name="relative_button">Relative</string>
+    <string name="frame_button">Frame</string>
+    <string name="grid_button">Grid</string>
 </resources>

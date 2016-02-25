@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context="com.example.dmitry.hws_android_school.ui.hw2.HW2Fragment">
+    tools:context="com.example.dmitry.hws_android_school.ui.hw3_menu.HW3MenuFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -17,27 +17,35 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/new_activity_button"
+                android:id="@+id/linear_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/new_activity_button"
+                android:text="@string/linear_button"
                 android:textAllCaps="false" />
 
             <Button
-                android:id="@+id/stack_activity_button"
+                android:id="@+id/relative_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/stack_activity_button"
+                android:text="@string/relative_button"
                 android:textAllCaps="false" />
 
             <Button
-                android:id="@+id/stack_fragment_button"
+                android:id="@+id/frame_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/stack_fragment_button"
+                android:text="@string/frame_button"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/grid_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/grid_button"
                 android:textAllCaps="false" />
 
         </LinearLayout>
