@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.dmitry.hws_android_school.ui.dashboard.MainMenuFragment">
+    tools:context="com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.LinearLayoutFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -20,32 +20,38 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/hw1_button"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/hw1_button"
-                android:textAllCaps="false" />
+                android:text="Text" />
 
-            <Button
-                android:id="@+id/hw2_button"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/hw2_button"
-                android:textAllCaps="false" />
-
-            <Button
-                android:id="@+id/hw3_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/hw3_button"
-                android:textAllCaps="false" />
+                android:text="Text" />
 
         </LinearLayout>
 
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/new_message_text"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/submit_button_height"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="@dimen/submit_button_width"
+            android:layout_height="@dimen/submit_button_height"
+            android:text="@string/submit_button" />
+
+
+    </LinearLayout>
 
 </LinearLayout>
