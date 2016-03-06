@@ -1,10 +1,8 @@
 package com.example.dmitry.hws_android_school.ui.hw4;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -13,7 +11,7 @@ import android.widget.TextView;
 import com.example.dmitry.hws_android_school.R;
 import com.example.dmitry.hws_android_school.ui.base.BaseActivity;
 
-import java.io.IOException;
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -26,8 +24,10 @@ import butterknife.OnClick;
 public class HW4MainActivity extends BaseActivity {
 
 
-    public static final int REQUEST_CODE_GET_STRING = 100_50;
-    public static final int REQUEST_CODE_GALLERY = 100_51;
+    public static final String DATE_STRING = "dete string";
+    public static final String URI_STRING = "uri string";
+    public static final int REQUEST_CODE_GET_STRING = 1;
+    public static final int REQUEST_CODE_GALLERY = 2;
 
 
     @Bind(R.id.title_main_hw4_label)
@@ -42,11 +42,30 @@ public class HW4MainActivity extends BaseActivity {
     Button loadImageButton;
 
 
+    String dateString = "";
+    String uriString = "";
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(DATE_STRING, dateString);
+        outState.putString(URI_STRING, uriString);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hw4_main);
         ButterKnife.bind(this);
+
+        if (savedInstanceState != null) {
+            dateString = savedInstanceState.getString(DATE_STRING, "");
+            uriString = savedInstanceState.getString(URI_STRING, "");
+            titleMainHw4Label.setText(dateString);
+            hw4ImageView.setImageURI(Uri.parse(uriString));
+        }
     }
 
 
@@ -67,7 +86,7 @@ public class HW4MainActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Bitmap bitmap = null;
+        super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
             case REQUEST_CODE_GET_STRING:
@@ -76,13 +95,15 @@ public class HW4MainActivity extends BaseActivity {
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTimeInMillis(time);
                     DateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
-                    titleMainHw4Label.setText(formater.format(calendar.getTime()));
+                    dateString = formater.format(calendar.getTime());
+                    titleMainHw4Label.setText(dateString);
                 } else
                     titleMainHw4Label.setText(R.string.no_result);
                 break;
             case REQUEST_CODE_GALLERY:
                 if(resultCode == RESULT_OK) {
                     Uri selectedImage = data.getData();
+                    uriString = selectedImage.toString();
                     hw4ImageView.setImageURI(null);
                     hw4ImageView.setImageURI(selectedImage);
                 }
@@ -90,8 +111,5 @@ public class HW4MainActivity extends BaseActivity {
             default:
                 break;
         }
-
-
-        super.onActivityResult(requestCode, resultCode, data);
     }
 }

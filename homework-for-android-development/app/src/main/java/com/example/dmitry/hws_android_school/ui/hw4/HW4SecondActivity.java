@@ -42,7 +42,6 @@ public class HW4SecondActivity extends BaseActivity {
 
         final Intent intent = getIntent();
 
-
         if (intent.hasExtra(CODE_MESSAGE_STRING))
             titleHw4SecondLabel.setText(intent.getStringExtra(CODE_MESSAGE_STRING));
         else
