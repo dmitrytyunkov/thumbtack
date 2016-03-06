@@ -50,4 +50,5 @@
     <string name="hw4_button">HW4</string>
     <string name="ok_button">OK</string>
     <string name="no_extra">No Extra</string>
+    <string name="no_result">No Result</string>
 </resources>

@@ -52,6 +52,14 @@ public class HW4SecondActivity extends BaseActivity {
 
     @OnClick(R.id.transfer_to_main_button)
     public void onTransferToMainButtonClick() {
-        
+        final Intent intent = new Intent();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
+                timePicker.getCurrentHour(), timePicker.getCurrentMinute());
+        long time = calendar.getTimeInMillis();
+        intent.putExtra(CODE_MESSAGE_STRING, time);
+
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
