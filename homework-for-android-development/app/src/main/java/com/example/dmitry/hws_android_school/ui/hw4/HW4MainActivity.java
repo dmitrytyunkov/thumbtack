@@ -1,17 +1,27 @@
 package com.example.dmitry.hws_android_school.ui.hw4;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.provider.MediaStore;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dmitry.hws_android_school.R;
+import com.example.dmitry.hws_android_school.extra.CameraHandler;
 import com.example.dmitry.hws_android_school.ui.base.BaseActivity;
 
-import java.net.URI;
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -44,6 +54,8 @@ public class HW4MainActivity extends BaseActivity {
 
     String dateString = "";
     String uriString = "";
+    @Bind(R.id.load_camera_button)
+    Button loadCameraButton;
 
 
     @Override
@@ -64,6 +76,7 @@ public class HW4MainActivity extends BaseActivity {
             dateString = savedInstanceState.getString(DATE_STRING, "");
             uriString = savedInstanceState.getString(URI_STRING, "");
             titleMainHw4Label.setText(dateString);
+            hw4ImageView.setImageURI(null);
             hw4ImageView.setImageURI(Uri.parse(uriString));
         }
     }
@@ -81,6 +94,19 @@ public class HW4MainActivity extends BaseActivity {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, REQUEST_CODE_GALLERY);
+    }
+
+    @OnClick(R.id.load_camera_button)
+    public void onLoadCameraButtonClick() {
+        CameraHandler cameraHandler = new CameraHandler(HW4MainActivity.this);
+        String path = cameraHandler.openCamera("");
+        cameraHandler.addToGallery(path);
+        SystemClock.sleep(5000);
+        File file = new File(path);
+        Uri uri = Uri.fromFile(file);
+        uriString = uri.toString();
+        hw4ImageView.setImageURI(null);
+        hw4ImageView.setImageURI(Uri.parse(uriString));
     }
 
 
@@ -101,7 +127,7 @@ public class HW4MainActivity extends BaseActivity {
                     titleMainHw4Label.setText(R.string.no_result);
                 break;
             case REQUEST_CODE_GALLERY:
-                if(resultCode == RESULT_OK) {
+                if (resultCode == RESULT_OK) {
                     Uri selectedImage = data.getData();
                     uriString = selectedImage.toString();
                     hw4ImageView.setImageURI(null);

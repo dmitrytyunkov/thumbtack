@@ -21,28 +21,28 @@
             android:orientation="vertical">
 
 
-        <TextView
-        android:id="@+id/title_main_hw4_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/title_transfer_label"
-        android:textSize="@dimen/label_text_size" />
+            <TextView
+                android:id="@+id/title_main_hw4_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/title_transfer_label"
+                android:textSize="@dimen/label_text_size" />
 
-    <EditText
-        android:id="@+id/transfer_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/transfer_text" />
+            <EditText
+                android:id="@+id/transfer_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/transfer_text" />
 
-    <Button
-        android:id="@+id/transfer_to_second_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:text="@string/transfer_button"
-        android:textAllCaps="false" />
+            <Button
+                android:id="@+id/transfer_to_second_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/transfer_button"
+                android:textAllCaps="false" />
 
             <ImageView
                 android:id="@+id/hw4_image_view"
@@ -50,16 +50,32 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitCenter" />
 
-            <Button
-                android:id="@+id/load_image_button"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="@string/load_image_button"
-                android:textAllCaps="false" />
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/load_image_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/load_image_button"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/load_camera_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/load_camera_button"
+                    android:textAllCaps="false" />
 
             </LinearLayout>
+
+        </LinearLayout>
 
     </ScrollView>
 

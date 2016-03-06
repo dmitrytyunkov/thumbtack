@@ -1,5 +1,8 @@
 package com.example.dmitry.hws_android_school.ui.base;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,7 +17,7 @@ import com.squareup.otto.Bus;
 /**
  * Created by dmitry on 24.02.16.
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     private Bus bus;
 
