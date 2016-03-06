@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import com.example.dmitry.hws_android_school.R;
 import com.example.dmitry.hws_android_school.ui.base.BaseFragment;
 
-import java.util.Random;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -55,7 +53,7 @@ public class FrameLayoutFragment extends BaseFragment {
     @OnClick(R.id.next_button)
     public void onNextButtonClick() {
         count++;
-                    //todo REVU you might want to use array for ids:         imageView.setImageResource(ids[imgCounter++]%ids.length);
+        //todo REVU you might want to use array for ids:         imageView.setImageResource(ids[imgCounter++]%ids.length);
 
         switch (count) {
             case 1:
@@ -64,10 +62,10 @@ public class FrameLayoutFragment extends BaseFragment {
             case 2:
                 imageView.setImageResource(R.drawable.volkswagen_png1783);
                 break;
-                default:
-                    imageView.setImageResource(R.drawable.volkswagen_png1774);
-                    count = 0;
-                    break;
+            default:
+                imageView.setImageResource(R.drawable.volkswagen_png1774);
+                count = 0;
+                break;
         }
     }
 }

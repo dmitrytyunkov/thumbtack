@@ -171,7 +171,7 @@ public class RandomGeneratorFragment extends BaseFragment {
         return stringBuilder;
     }
 
-            //todo REVU really long and unreadable method. Should be splitted up.
+    //todo REVU really long and unreadable method. Should be splitted up.
     @OnClick(R.id.random_button)
     public void onRandomButtonClick() {
         if (minValueText.getText().length() != 0 && maxValueText.getText().length() != 0) {

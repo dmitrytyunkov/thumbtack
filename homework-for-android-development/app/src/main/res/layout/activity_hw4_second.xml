@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
@@ -7,9 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.dmitry.hws_android_school.ui.dashboard.MainMenuFragment">
+    tools:context="com.example.dmitry.hws_android_school.ui.hw4.HW4MainActivity">
 
-    <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,36 +20,32 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/hw1_button"
+            <TextView
+                android:id="@+id/title_hw4_second_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/title_transfer_label"
+                android:textSize="@dimen/label_text_size" />
+
+            <DatePicker
+                android:id="@+id/date_picker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/hw1_button"
-                android:textAllCaps="false" />
+                android:calendarViewShown="false" />
+
+            <TimePicker
+                android:id="@+id/time_picker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/hw2_button"
+                android:id="@+id/transfer_to_main_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/hw2_button"
-                android:textAllCaps="false" />
-
-            <Button
-                android:id="@+id/hw3_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/hw3_button"
-                android:textAllCaps="false" />
-
-            <Button
-                android:id="@+id/hw4_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/hw4_button"
+                android:layout_gravity="center"
+                android:text="@string/ok_button"
                 android:textAllCaps="false" />
 
         </LinearLayout>

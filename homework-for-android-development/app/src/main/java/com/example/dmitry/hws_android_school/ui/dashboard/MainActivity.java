@@ -11,6 +11,7 @@ import com.example.dmitry.hws_android_school.events.OpenFrameLayoutFragmentEvent
 import com.example.dmitry.hws_android_school.events.OpenGridLayoutFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenHW2MenuFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenHW3MenuFragmentEvent;
+import com.example.dmitry.hws_android_school.events.OpenHW4MainActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenLinearLayoutFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenNewActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenRandomGeneratorFragmentEvent;
@@ -24,6 +25,7 @@ import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.GridLayoutF
 import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.LinearLayoutFragment;
 import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.RelativeLayoutFragment;
 import com.example.dmitry.hws_android_school.ui.hw3_menu.HW3MenuFragment;
+import com.example.dmitry.hws_android_school.ui.hw4.HW4MainActivity;
 import com.example.dmitry.hws_android_school.ui.new_activity.NewActivity;
 import com.example.dmitry.hws_android_school.ui.random_generator.RandomGeneratorFragment;
 import com.example.dmitry.hws_android_school.ui.stack_activity.Stack1Activity;
@@ -125,6 +127,11 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.MainM
     @Subscribe
     public void onOpenGridLayoutFragmentEvent(OpenGridLayoutFragmentEvent event) {
         replaceFragment(new GridLayoutFragment(), true);
+    }
+
+    @Subscribe
+    public void onOpenHW4MainActivityEvent(OpenHW4MainActivityEvent event) {
+        startActivity(new Intent(this, HW4MainActivity.class));
     }
 
 

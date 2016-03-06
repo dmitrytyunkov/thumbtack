@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.dmitry.hws_android_school.R;
-import com.example.dmitry.hws_android_school.events.OpenFragment1Event;
 import com.example.dmitry.hws_android_school.events.OpenFragment2Event;
 import com.example.dmitry.hws_android_school.events.OpenFragment3Event;
 import com.example.dmitry.hws_android_school.ui.base.BaseFragment;

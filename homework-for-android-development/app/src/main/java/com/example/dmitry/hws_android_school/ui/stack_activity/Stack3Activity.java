@@ -1,6 +1,5 @@
 package com.example.dmitry.hws_android_school.ui.stack_activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;

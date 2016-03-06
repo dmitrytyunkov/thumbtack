@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dmitry.hws_android_school" >
+    package="com.example.dmitry.hws_android_school">
 
     <application
         android:name=".application.App"
@@ -8,8 +8,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".ui.dashboard.MainActivity" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.dashboard.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,8 +19,9 @@
         <activity android:name=".ui.new_activity.NewActivity" />
         <activity android:name=".ui.stack_activity.Stack1Activity" />
         <activity android:name=".ui.stack_activity.Stack2Activity" />
-        <activity android:name=".ui.stack_activity.Stack3Activity" >
-        </activity>
+        <activity android:name=".ui.stack_activity.Stack3Activity" />
+        <activity android:name=".ui.hw4.HW4MainActivity" />
+        <activity android:name=".ui.hw4.HW4SecondActivity" />
     </application>
 
 </manifest>

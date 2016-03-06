@@ -3,7 +3,6 @@ package com.example.dmitry.hws_android_school.ui.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 
 import com.squareup.otto.Bus;
@@ -14,7 +13,7 @@ import butterknife.ButterKnife;
  * Created by dmitry on 24.02.16.
  */
 public class BaseFragment extends Fragment {
-    
+
     private Bus bus;
 
     @Override

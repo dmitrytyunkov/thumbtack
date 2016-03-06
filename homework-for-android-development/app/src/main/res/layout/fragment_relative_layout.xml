@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/submit_button_height"
             android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@id/submit_button"/>
+            android:layout_toLeftOf="@id/submit_button" />
 
         <Button
             android:id="@+id/submit_button"

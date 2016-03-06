@@ -1,9 +1,9 @@
 package com.example.dmitry.hws_android_school.ui.hw2_menu;
 
 
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
