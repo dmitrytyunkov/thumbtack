@@ -1,21 +1,12 @@
 package com.example.dmitry.hws_android_school.ui.hw4;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.provider.MediaStore;
-import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.dmitry.hws_android_school.R;
 import com.example.dmitry.hws_android_school.extra.CameraHandler;
@@ -34,8 +25,8 @@ import butterknife.OnClick;
 public class HW4MainActivity extends BaseActivity {
 
 
-    public static final String DATE_STRING = "dete string";
-    public static final String URI_STRING = "uri string";
+    public static final String DATE_STRING = "date_string";
+    public static final String URI_STRING = "uri_string";
     public static final int REQUEST_CODE_GET_STRING = 1;
     public static final int REQUEST_CODE_GALLERY = 2;
 
@@ -50,12 +41,14 @@ public class HW4MainActivity extends BaseActivity {
     ImageView hw4ImageView;
     @Bind(R.id.load_image_button)
     Button loadImageButton;
-
-
-    String dateString = "";
-    String uriString = "";
     @Bind(R.id.load_camera_button)
     Button loadCameraButton;
+
+
+    private CameraHandler cameraHandler;
+    String path = "";
+    String dateString = "";
+    String uriString = "";
 
 
     @Override
@@ -71,6 +64,8 @@ public class HW4MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hw4_main);
         ButterKnife.bind(this);
+
+        cameraHandler = new CameraHandler(this);
 
         if (savedInstanceState != null) {
             dateString = savedInstanceState.getString(DATE_STRING, "");
@@ -98,15 +93,7 @@ public class HW4MainActivity extends BaseActivity {
 
     @OnClick(R.id.load_camera_button)
     public void onLoadCameraButtonClick() {
-        CameraHandler cameraHandler = new CameraHandler(HW4MainActivity.this);
-        String path = cameraHandler.openCamera("");
-        cameraHandler.addToGallery(path);
-        SystemClock.sleep(5000);
-        File file = new File(path);
-        Uri uri = Uri.fromFile(file);
-        uriString = uri.toString();
-        hw4ImageView.setImageURI(null);
-        hw4ImageView.setImageURI(Uri.parse(uriString));
+        path = cameraHandler.openCamera("");
     }
 
 
@@ -133,6 +120,14 @@ public class HW4MainActivity extends BaseActivity {
                     hw4ImageView.setImageURI(null);
                     hw4ImageView.setImageURI(selectedImage);
                 }
+                break;
+            case CameraHandler.REQUEST_IMAGE_CAPTURE:
+                cameraHandler.addToGallery(path);
+                File file = new File(path);
+                Uri uri = Uri.fromFile(file);
+                uriString = uri.toString();
+                hw4ImageView.setImageURI(null);
+                hw4ImageView.setImageURI(Uri.parse(uriString));
                 break;
             default:
                 break;
