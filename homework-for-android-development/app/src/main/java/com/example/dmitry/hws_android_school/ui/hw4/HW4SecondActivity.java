@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.example.dmitry.hws_android_school.R;
+import com.example.dmitry.hws_android_school.extra.PlayMarketUtils;
 import com.example.dmitry.hws_android_school.ui.base.BaseActivity;
 
 import java.util.Calendar;
@@ -30,6 +31,8 @@ public class HW4SecondActivity extends BaseActivity {
     TimePicker timePicker;
     @Bind(R.id.transfer_to_main_button)
     Button transferToMainButton;
+    @Bind(R.id.play_market_button)
+    Button playMarketButton;
 
 
     @Override
@@ -37,6 +40,7 @@ public class HW4SecondActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hw4_second);
         ButterKnife.bind(this);
+
         timePicker.setIs24HourView(true);
         timePicker.setCurrentHour(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
 
@@ -51,14 +55,21 @@ public class HW4SecondActivity extends BaseActivity {
 
     @OnClick(R.id.transfer_to_main_button)
     public void onTransferToMainButtonClick() {
-        final Intent intent = new Intent();
         Calendar calendar = Calendar.getInstance();
         calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
                 timePicker.getCurrentHour(), timePicker.getCurrentMinute());
         long time = calendar.getTimeInMillis();
+
+        final Intent intent = new Intent();
         intent.putExtra(CODE_MESSAGE_STRING, time);
 
         setResult(RESULT_OK, intent);
         finish();
     }
+
+    @OnClick(R.id.play_market_button)
+    public void onPlayMarketButtonClick() {
+        PlayMarketUtils.openPlayMarket(HW4SecondActivity.this, "com.google.android.googlequicksearchbox");
+    }
+
 }

@@ -54,4 +54,5 @@
     <string name="load_image_button">Load Image</string>
     <string name="no_camera">No Camera</string>
     <string name="no_sdcard_access">No SD Card</string>
+    <string name="play_market_button">Play Market</string>
 </resources>
