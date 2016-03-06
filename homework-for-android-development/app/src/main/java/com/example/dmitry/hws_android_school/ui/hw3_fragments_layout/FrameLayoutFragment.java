@@ -21,7 +21,7 @@ import butterknife.OnClick;
  */
 public class FrameLayoutFragment extends BaseFragment {
 
-    @Bind(R.id.image_view)
+    @Bind(R.id.hw3_image_view)
     ImageView imageView;
     @Bind(R.id.next_button)
     ImageButton nextButton;
