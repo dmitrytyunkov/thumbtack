@@ -56,4 +56,9 @@
     <string name="no_sdcard_access">No SD Card</string>
     <string name="play_market_button">Play Market</string>
     <string name="load_camera_button">Camera</string>
+    <string name="hw5_button">HW5</string>
+    <string name="hw6_button">HW6</string>
+    <string name="hw7_button">HW7</string>
+    <string name="hw8_button">HW8</string>
+    <string name="hw9_button">HW9</string>
 </resources>
