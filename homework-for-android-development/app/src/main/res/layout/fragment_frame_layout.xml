@@ -13,7 +13,7 @@
         android:id="@+id/hw3_image_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:src="@drawable/volkswagen_png1774" />
+        android:src="@drawable/volkswagen_png1773" />
 
     <ImageButton
         android:id="@+id/next_button"
@@ -21,6 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="#00000000"
-        android:src="@drawable/arrow_right" />
+        android:src="@drawable/arrows" />
 
 </FrameLayout>
