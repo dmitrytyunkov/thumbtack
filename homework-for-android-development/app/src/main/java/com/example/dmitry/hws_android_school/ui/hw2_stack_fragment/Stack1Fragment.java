@@ -1,4 +1,4 @@
-package com.example.dmitry.hws_android_school.ui.stack_fragment;
+package com.example.dmitry.hws_android_school.ui.hw2_stack_fragment;
 
 
 import android.os.Bundle;

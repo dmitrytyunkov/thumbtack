@@ -1,4 +1,4 @@
-package com.example.dmitry.hws_android_school.ui.new_activity;
+package com.example.dmitry.hws_android_school.ui.hw2_new_activity;
 
 import android.os.Bundle;
 

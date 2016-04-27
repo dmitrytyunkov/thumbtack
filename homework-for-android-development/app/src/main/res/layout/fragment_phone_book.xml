@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.dmitry.hws_android_school.ui.hw7.PhoneBookFragment">
+    tools:context=".ui.hw7_phone_book.PhoneBookFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ListView

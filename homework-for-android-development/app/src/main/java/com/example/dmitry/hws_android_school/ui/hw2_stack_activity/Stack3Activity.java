@@ -1,4 +1,4 @@
-package com.example.dmitry.hws_android_school.ui.stack_activity;
+package com.example.dmitry.hws_android_school.ui.hw2_stack_activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,28 +11,28 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Stack1Activity extends BaseActivity {
+public class Stack3Activity extends BaseActivity {
 
+    @Bind(R.id.activity1_button)
+    Button activity1Button;
     @Bind(R.id.activity2_button)
     Button activity2Button;
-    @Bind(R.id.activity3_button)
-    Button activity3Button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stack1);
+        setContentView(R.layout.activity_stack3);
         ButterKnife.bind(this);
     }
 
 
+    @OnClick(R.id.activity1_button)
+    public void onActivity1ButtonClick() {
+        startActivity(new Intent(this, Stack1Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+    }
+
     @OnClick(R.id.activity2_button)
     public void onActivity2ButtonClick() {
         startActivity(new Intent(this, Stack2Activity.class).setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-    }
-
-    @OnClick(R.id.activity3_button)
-    public void onActivity3ButtonClick() {
-        startActivity(new Intent(this, Stack3Activity.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY));
     }
 }

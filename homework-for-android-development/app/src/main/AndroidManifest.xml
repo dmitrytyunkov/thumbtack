@@ -24,10 +24,10 @@
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.new_activity.NewActivity" />
-        <activity android:name=".ui.stack_activity.Stack1Activity" />
-        <activity android:name=".ui.stack_activity.Stack2Activity" />
-        <activity android:name=".ui.stack_activity.Stack3Activity" />
+        <activity android:name=".ui.hw2_new_activity.NewActivity" />
+        <activity android:name=".ui.hw2_stack_activity.Stack1Activity" />
+        <activity android:name=".ui.hw2_stack_activity.Stack2Activity" />
+        <activity android:name=".ui.hw2_stack_activity.Stack3Activity" />
         <activity android:name=".ui.hw4.HW4MainActivity" />
         <activity android:name=".ui.hw4.HW4SecondActivity" />
 

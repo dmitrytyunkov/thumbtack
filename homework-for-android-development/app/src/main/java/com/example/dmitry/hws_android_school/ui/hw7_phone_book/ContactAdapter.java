@@ -1,8 +1,6 @@
-package com.example.dmitry.hws_android_school.ui.hw7;
+package com.example.dmitry.hws_android_school.ui.hw7_phone_book;
 
 import android.content.Context;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

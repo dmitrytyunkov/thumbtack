@@ -30,16 +30,16 @@ import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.LinearLayou
 import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.RelativeLayoutFragment;
 import com.example.dmitry.hws_android_school.ui.hw3_menu.HW3MenuFragment;
 import com.example.dmitry.hws_android_school.ui.hw4.HW4MainActivity;
-import com.example.dmitry.hws_android_school.ui.hw7.HW7MenuFragment;
-import com.example.dmitry.hws_android_school.ui.hw7.PhoneBookFragment;
-import com.example.dmitry.hws_android_school.ui.hw7.SaveInFileFragment;
-import com.example.dmitry.hws_android_school.ui.hw7.SaveInSharedPreferencesFragment;
-import com.example.dmitry.hws_android_school.ui.new_activity.NewActivity;
-import com.example.dmitry.hws_android_school.ui.random_generator.RandomGeneratorFragment;
-import com.example.dmitry.hws_android_school.ui.stack_activity.Stack1Activity;
-import com.example.dmitry.hws_android_school.ui.stack_fragment.Stack1Fragment;
-import com.example.dmitry.hws_android_school.ui.stack_fragment.Stack2Fragment;
-import com.example.dmitry.hws_android_school.ui.stack_fragment.Stack3Fragment;
+import com.example.dmitry.hws_android_school.ui.hw7_menu.HW7MenuFragment;
+import com.example.dmitry.hws_android_school.ui.hw7_phone_book.PhoneBookFragment;
+import com.example.dmitry.hws_android_school.ui.hw7_save_text.SaveInFileFragment;
+import com.example.dmitry.hws_android_school.ui.hw7_save_text.SaveInSharedPreferencesFragment;
+import com.example.dmitry.hws_android_school.ui.hw2_new_activity.NewActivity;
+import com.example.dmitry.hws_android_school.ui.hw1_random_generator.RandomGeneratorFragment;
+import com.example.dmitry.hws_android_school.ui.hw2_stack_activity.Stack1Activity;
+import com.example.dmitry.hws_android_school.ui.hw2_stack_fragment.Stack1Fragment;
+import com.example.dmitry.hws_android_school.ui.hw2_stack_fragment.Stack2Fragment;
+import com.example.dmitry.hws_android_school.ui.hw2_stack_fragment.Stack3Fragment;
 import com.squareup.otto.Subscribe;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.MainMenuFragmentCallbacks, HW2MenuFragment.HW2FragmentCallbacks {

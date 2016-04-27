@@ -1,4 +1,4 @@
-package com.example.dmitry.hws_android_school.ui.random_generator;
+package com.example.dmitry.hws_android_school.ui.hw1_random_generator;
 
 
 import android.content.ClipData;

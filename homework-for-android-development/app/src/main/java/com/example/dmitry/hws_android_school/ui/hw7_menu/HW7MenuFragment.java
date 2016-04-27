@@ -1,4 +1,4 @@
-package com.example.dmitry.hws_android_school.ui.hw7;
+package com.example.dmitry.hws_android_school.ui.hw7_menu;
 
 
 import android.os.Bundle;

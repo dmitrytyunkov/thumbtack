@@ -1,4 +1,4 @@
-package com.example.dmitry.hws_android_school.ui.hw7;
+package com.example.dmitry.hws_android_school.ui.hw7_phone_book;
 
 
 import android.content.DialogInterface;
@@ -84,24 +84,15 @@ public class PhoneBookFragment extends BaseFragment {
 
     @OnClick(R.id.add_contact_button)
     public void onAddContactButtonClick() {
-        final EditText inputName = new EditText(getContext());
-        inputName.setHint(R.string.name);
-        inputName.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
         final EditText inputLastName = new EditText(getContext());
-        inputLastName.setHint(R.string.last_name);
-        inputLastName.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+        final EditText inputName = new EditText(getContext());
         final EditText inputPhone = new EditText(getContext());
-        inputPhone.setHint(R.string.phone);
-        inputPhone.setInputType(InputType.TYPE_CLASS_PHONE);
-        LinearLayout linearLayout = new LinearLayout(getContext());
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        linearLayout.addView(inputLastName);
-        linearLayout.addView(inputName);
-        linearLayout.addView(inputPhone);
+        View view = createAddContactView(inputLastName, inputName, inputPhone);
+
         new AlertDialog
                 .Builder(getContext())
                 .setTitle(getString(R.string.enter_contact))
-                .setView(linearLayout)
+                .setView(view)
                 .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -115,5 +106,25 @@ public class PhoneBookFragment extends BaseFragment {
                 })
                 .setNegativeButton(getString(R.string.cancel), null)
                 .show();
+    }
+
+
+    private View createAddContactView(EditText inputLastName, EditText inputName, EditText inputPhone) {
+        LinearLayout linearLayout = new LinearLayout(getContext());
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+
+        inputLastName.setHint(R.string.last_name);
+        inputLastName.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+        linearLayout.addView(inputLastName);
+
+        inputName.setHint(R.string.name);
+        inputName.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+        linearLayout.addView(inputName);
+
+        inputPhone.setHint(R.string.phone);
+        inputPhone.setInputType(InputType.TYPE_CLASS_PHONE);
+        linearLayout.addView(inputPhone);
+
+        return linearLayout;
     }
 }
