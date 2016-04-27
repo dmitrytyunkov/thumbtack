@@ -17,6 +17,7 @@ import com.example.dmitry.hws_android_school.events.OpenLinearLayoutFragmentEven
 import com.example.dmitry.hws_android_school.events.OpenNewActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenRandomGeneratorFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenRelativeLayoutFragmentEvent;
+import com.example.dmitry.hws_android_school.events.OpenSaveInFileFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenSaveInSharedPreferencesFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenStackActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenStackFragmentEvent;
@@ -29,6 +30,7 @@ import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.RelativeLay
 import com.example.dmitry.hws_android_school.ui.hw3_menu.HW3MenuFragment;
 import com.example.dmitry.hws_android_school.ui.hw4.HW4MainActivity;
 import com.example.dmitry.hws_android_school.ui.hw7.HW7MenuFragment;
+import com.example.dmitry.hws_android_school.ui.hw7.SaveInFileFragment;
 import com.example.dmitry.hws_android_school.ui.hw7.SaveInSharedPreferencesFragment;
 import com.example.dmitry.hws_android_school.ui.new_activity.NewActivity;
 import com.example.dmitry.hws_android_school.ui.random_generator.RandomGeneratorFragment;
@@ -146,6 +148,11 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.MainM
     @Subscribe
     public void onOpenSaveInSharedPreferencesFragmentEvent(OpenSaveInSharedPreferencesFragmentEvent event) {
         replaceFragment(new SaveInSharedPreferencesFragment());
+    }
+
+    @Subscribe
+    public void onOpenSaveInFileFragmentEvent(OpenSaveInFileFragmentEvent event) {
+        replaceFragment(new SaveInFileFragment());
     }
 
 

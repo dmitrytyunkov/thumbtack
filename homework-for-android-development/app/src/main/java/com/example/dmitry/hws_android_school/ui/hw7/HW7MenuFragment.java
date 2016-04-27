@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dmitry.hws_android_school.R;
+import com.example.dmitry.hws_android_school.events.OpenSaveInFileFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenSaveInSharedPreferencesFragmentEvent;
 import com.example.dmitry.hws_android_school.ui.base.BaseFragment;
 
@@ -40,7 +41,12 @@ public class HW7MenuFragment extends BaseFragment {
     }
 
     @OnClick(R.id.save_in_shared_preferences_button)
-    public void onSaveinSharedPreferencesButtonClick() {
+    public void onSaveInSharedPreferencesButtonClick() {
         getBus().post(new OpenSaveInSharedPreferencesFragmentEvent());
+    }
+
+    @OnClick(R.id.save_in_file_button)
+    public void onSaveInFileButtonClick() {
+        getBus().post(new OpenSaveInFileFragmentEvent());
     }
 }

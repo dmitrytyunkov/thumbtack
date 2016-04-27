@@ -39,7 +39,7 @@ public class SaveInSharedPreferencesFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_save_in_shared_preferences, container, false);
+        View view = inflater.inflate(R.layout.fragment_save_text, container, false);
         ButterKnife.bind(this, view);
         sharedPreferences = getContext().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         return view;
