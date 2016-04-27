@@ -12,10 +12,12 @@ import com.example.dmitry.hws_android_school.events.OpenGridLayoutFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenHW2MenuFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenHW3MenuFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenHW4MainActivityEvent;
+import com.example.dmitry.hws_android_school.events.OpenHW7MenuFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenLinearLayoutFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenNewActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenRandomGeneratorFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenRelativeLayoutFragmentEvent;
+import com.example.dmitry.hws_android_school.events.OpenSaveInSharedPreferencesFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenStackActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenStackFragmentEvent;
 import com.example.dmitry.hws_android_school.ui.base.BaseActivity;
@@ -26,6 +28,8 @@ import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.LinearLayou
 import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.RelativeLayoutFragment;
 import com.example.dmitry.hws_android_school.ui.hw3_menu.HW3MenuFragment;
 import com.example.dmitry.hws_android_school.ui.hw4.HW4MainActivity;
+import com.example.dmitry.hws_android_school.ui.hw7.HW7MenuFragment;
+import com.example.dmitry.hws_android_school.ui.hw7.SaveInSharedPreferencesFragment;
 import com.example.dmitry.hws_android_school.ui.new_activity.NewActivity;
 import com.example.dmitry.hws_android_school.ui.random_generator.RandomGeneratorFragment;
 import com.example.dmitry.hws_android_school.ui.stack_activity.Stack1Activity;
@@ -132,6 +136,16 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.MainM
     @Subscribe
     public void onOpenHW4MainActivityEvent(OpenHW4MainActivityEvent event) {
         startActivity(new Intent(this, HW4MainActivity.class));
+    }
+
+    @Subscribe
+    public void onOpenHW7FragmentEvent(OpenHW7MenuFragmentEvent event) {
+        replaceFragment(new HW7MenuFragment(), true);
+    }
+
+    @Subscribe
+    public void onOpenSaveInSharedPreferencesFragmentEvent(OpenSaveInSharedPreferencesFragmentEvent event) {
+        replaceFragment(new SaveInSharedPreferencesFragment());
     }
 
 

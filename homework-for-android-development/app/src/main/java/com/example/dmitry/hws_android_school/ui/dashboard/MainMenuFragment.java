@@ -12,6 +12,7 @@ import com.example.dmitry.hws_android_school.R;
 import com.example.dmitry.hws_android_school.events.OpenHW2MenuFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenHW3MenuFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenHW4MainActivityEvent;
+import com.example.dmitry.hws_android_school.events.OpenHW7MenuFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenRandomGeneratorFragmentEvent;
 import com.example.dmitry.hws_android_school.ui.base.BaseFragment;
 
@@ -80,6 +81,11 @@ public class MainMenuFragment extends BaseFragment {
     @OnClick(R.id.hw4_button)
     public void onHW4ButtonClick() {
         getBus().post(new OpenHW4MainActivityEvent());
+    }
+
+    @OnClick(R.id.hw7_button)
+    public void onHW7ButtonClick() {
+        getBus().post(new OpenHW7MenuFragmentEvent());
     }
 
 

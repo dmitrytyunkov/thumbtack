@@ -25,9 +25,8 @@ public class FrameLayoutFragment extends BaseFragment {
     ImageView imageView;
     @Bind(R.id.next_button)
     ImageButton nextButton;
-
-    private int count = 0;
     int[] ids = {R.drawable.volkswagen_png1773, R.drawable.volkswagen_png1774, R.drawable.volkswagen_png1775};
+    private int count = 0;
 
 
     public FrameLayoutFragment() {
@@ -54,6 +53,6 @@ public class FrameLayoutFragment extends BaseFragment {
     @OnClick(R.id.next_button)
     public void onNextButtonClick() {
         //todo REVU you might want to use array for ids:         imageView.setImageResource(ids[imgCounter++]%ids.length);
-        imageView.setImageResource(ids[++count%ids.length]);
+        imageView.setImageResource(ids[++count % ids.length]);
     }
 }

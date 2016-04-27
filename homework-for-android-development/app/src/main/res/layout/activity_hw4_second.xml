@@ -44,23 +44,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/transfer_to_main_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:text="@string/ok_button"
-                android:textAllCaps="false" />
+                <Button
+                    android:id="@+id/transfer_to_main_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/ok_button"
+                    android:textAllCaps="false" />
 
-            <Button
-                android:id="@+id/play_market_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:text="@string/play_market_button"
-                android:textAllCaps="false" />
+                <Button
+                    android:id="@+id/play_market_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/play_market_button"
+                    android:textAllCaps="false" />
 
             </LinearLayout>
 

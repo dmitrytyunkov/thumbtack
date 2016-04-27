@@ -43,13 +43,10 @@ public class HW4MainActivity extends BaseActivity {
     Button loadImageButton;
     @Bind(R.id.load_camera_button)
     Button loadCameraButton;
-
-
-    private CameraHandler cameraHandler;
     String path = "";
     String dateString = "";
     String uriString = "";
-
+    private CameraHandler cameraHandler;
 
     @Override
     public void onSaveInstanceState(Bundle outState) {

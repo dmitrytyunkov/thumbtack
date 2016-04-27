@@ -61,4 +61,7 @@
     <string name="hw7_button">HW7</string>
     <string name="hw8_button">HW8</string>
     <string name="hw9_button">HW9</string>
+    <string name="save_in_file_button">Save in File</string>
+    <string name="save_in_shared_preferences_button">Save in SharedPreferences</string>
+    <string name="edit_text_for_save">Text for save</string>
 </resources>
