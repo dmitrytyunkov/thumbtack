@@ -15,6 +15,7 @@ import com.example.dmitry.hws_android_school.events.OpenHW4MainActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenHW7MenuFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenLinearLayoutFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenNewActivityEvent;
+import com.example.dmitry.hws_android_school.events.OpenPhoneBookFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenRandomGeneratorFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenRelativeLayoutFragmentEvent;
 import com.example.dmitry.hws_android_school.events.OpenSaveInFileFragmentEvent;
@@ -30,6 +31,7 @@ import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.RelativeLay
 import com.example.dmitry.hws_android_school.ui.hw3_menu.HW3MenuFragment;
 import com.example.dmitry.hws_android_school.ui.hw4.HW4MainActivity;
 import com.example.dmitry.hws_android_school.ui.hw7.HW7MenuFragment;
+import com.example.dmitry.hws_android_school.ui.hw7.PhoneBookFragment;
 import com.example.dmitry.hws_android_school.ui.hw7.SaveInFileFragment;
 import com.example.dmitry.hws_android_school.ui.hw7.SaveInSharedPreferencesFragment;
 import com.example.dmitry.hws_android_school.ui.new_activity.NewActivity;
@@ -147,12 +149,17 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.MainM
 
     @Subscribe
     public void onOpenSaveInSharedPreferencesFragmentEvent(OpenSaveInSharedPreferencesFragmentEvent event) {
-        replaceFragment(new SaveInSharedPreferencesFragment());
+        replaceFragment(new SaveInSharedPreferencesFragment(), true);
     }
 
     @Subscribe
     public void onOpenSaveInFileFragmentEvent(OpenSaveInFileFragmentEvent event) {
-        replaceFragment(new SaveInFileFragment());
+        replaceFragment(new SaveInFileFragment(), true);
+    }
+
+    @Subscribe
+    public void onOpenPhoneBookFragmentEvent(OpenPhoneBookFragmentEvent event) {
+        replaceFragment(new PhoneBookFragment(), true);
     }
 
 

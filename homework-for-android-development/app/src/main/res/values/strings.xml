@@ -64,4 +64,12 @@
     <string name="save_in_file_button">Save in File</string>
     <string name="save_in_shared_preferences_button">Save in SharedPreferences</string>
     <string name="edit_text_for_save">Text for save</string>
+    <string name="phone_book_button">Phone Book</string>
+    <string name="add_contact">Add contact</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last name</string>
+    <string name="phone">Phone number</string>
+    <string name="enter_contact">Enter contact</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

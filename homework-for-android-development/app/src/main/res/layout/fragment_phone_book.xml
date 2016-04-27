@@ -7,32 +7,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.dmitry.hws_android_school.ui.hw7.HW7MenuFragment">
+    tools:context="com.example.dmitry.hws_android_school.ui.hw7.PhoneBookFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <Button
-        android:id="@+id/save_in_shared_preferences_button"
+    <ListView
+        android:id="@+id/contacts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/save_in_shared_preferences_button"
-        android:textAllCaps="false" />
+        android:layout_weight="1" />
 
     <Button
-        android:id="@+id/save_in_file_button"
+        android:id="@+id/add_contact_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/save_in_file_button"
-        android:textAllCaps="false" />
-
-
-    <Button
-        android:id="@+id/phone_book_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/phone_book_button"
+        android:text="@string/add_contact"
         android:textAllCaps="false" />
 
 </LinearLayout>
