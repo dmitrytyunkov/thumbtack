@@ -6,13 +6,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.ListView;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import com.example.dmitry.hws_android_school.R;
 import com.example.dmitry.hws_android_school.model.Contact;
@@ -33,7 +35,10 @@ public class PhoneBookFragment extends BaseFragment {
 
 
     @Bind(R.id.contacts)
-    ListView contacts;
+    RecyclerView contacts;
+    /*@Bind(R.id.contacts)
+    ListView contacts;*/
+
     private Realm realm;
 
 
@@ -75,11 +80,15 @@ public class PhoneBookFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final RealmResults<Contact> noteRealmResults = realm
+        final RealmResults<Contact> contactRealmResults = realm
                 .where(Contact.class)
                 .findAllSorted("lastName", Sort.ASCENDING);
-        final ContactAdapter contactAdapter = new ContactAdapter(getActivity(), noteRealmResults, true);
+/*        final ContactAdapter contactAdapter = new ContactAdapter(getActivity(), contactRealmResults, true);
+        contacts.setAdapter(contactAdapter);*/
+        final ContactRecyclerAdapter contactAdapter = new ContactRecyclerAdapter(getActivity(), contactRealmResults, true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         contacts.setAdapter(contactAdapter);
+        contacts.setLayoutManager(layoutManager);
     }
 
     @OnClick(R.id.add_contact_button)

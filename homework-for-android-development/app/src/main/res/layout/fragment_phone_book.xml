@@ -10,7 +10,13 @@
     tools:context=".ui.hw7_phone_book.PhoneBookFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ListView
+    <!--    <ListView
+            android:id="@+id/contacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />-->
+
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/contacts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

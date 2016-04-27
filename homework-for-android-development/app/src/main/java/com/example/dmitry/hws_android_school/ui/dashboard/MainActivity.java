@@ -23,7 +23,13 @@ import com.example.dmitry.hws_android_school.events.OpenSaveInSharedPreferencesF
 import com.example.dmitry.hws_android_school.events.OpenStackActivityEvent;
 import com.example.dmitry.hws_android_school.events.OpenStackFragmentEvent;
 import com.example.dmitry.hws_android_school.ui.base.BaseActivity;
+import com.example.dmitry.hws_android_school.ui.hw1_random_generator.RandomGeneratorFragment;
 import com.example.dmitry.hws_android_school.ui.hw2_menu.HW2MenuFragment;
+import com.example.dmitry.hws_android_school.ui.hw2_new_activity.NewActivity;
+import com.example.dmitry.hws_android_school.ui.hw2_stack_activity.Stack1Activity;
+import com.example.dmitry.hws_android_school.ui.hw2_stack_fragment.Stack1Fragment;
+import com.example.dmitry.hws_android_school.ui.hw2_stack_fragment.Stack2Fragment;
+import com.example.dmitry.hws_android_school.ui.hw2_stack_fragment.Stack3Fragment;
 import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.FrameLayoutFragment;
 import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.GridLayoutFragment;
 import com.example.dmitry.hws_android_school.ui.hw3_fragments_layout.LinearLayoutFragment;
@@ -34,12 +40,6 @@ import com.example.dmitry.hws_android_school.ui.hw7_menu.HW7MenuFragment;
 import com.example.dmitry.hws_android_school.ui.hw7_phone_book.PhoneBookFragment;
 import com.example.dmitry.hws_android_school.ui.hw7_save_text.SaveInFileFragment;
 import com.example.dmitry.hws_android_school.ui.hw7_save_text.SaveInSharedPreferencesFragment;
-import com.example.dmitry.hws_android_school.ui.hw2_new_activity.NewActivity;
-import com.example.dmitry.hws_android_school.ui.hw1_random_generator.RandomGeneratorFragment;
-import com.example.dmitry.hws_android_school.ui.hw2_stack_activity.Stack1Activity;
-import com.example.dmitry.hws_android_school.ui.hw2_stack_fragment.Stack1Fragment;
-import com.example.dmitry.hws_android_school.ui.hw2_stack_fragment.Stack2Fragment;
-import com.example.dmitry.hws_android_school.ui.hw2_stack_fragment.Stack3Fragment;
 import com.squareup.otto.Subscribe;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.MainMenuFragmentCallbacks, HW2MenuFragment.HW2FragmentCallbacks {

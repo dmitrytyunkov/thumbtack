@@ -2,18 +2,14 @@ package com.example.dmitry.hws_android_school.model;
 
 import io.realm.RealmObject;
 import io.realm.annotations.RealmClass;
-import io.realm.annotations.Required;
 
 /**
  * Created by Dmitry on 27.04.2016.
  */
 @RealmClass
 public class Contact extends RealmObject {
-    @Required
     private String name;
-    @Required
     private String lastName;
-    @Required
     private String phone;
 
 
